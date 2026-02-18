@@ -69,7 +69,10 @@
     "@biomejs/biome": "^2.2.0",
     "@solana-mobile-stack/config": "workspace:*",
     "@types/bun": "catalog:",
+    "babel-preset-expo": "^54.0.10",
+    "expo-build-properties": "^1.0.10",
     "lefthook": "^2.0.13",
+    "native": "workspace:*",
     "turbo": "^2.6.3",
     "typescript": "catalog:"
   },

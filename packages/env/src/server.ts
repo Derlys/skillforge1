@@ -12,6 +12,7 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(['development', 'production', 'test'])
       .default('development'),
+    PORT: z.coerce.number().default(3002),
     SOLANA_CLUSTER: z
       .enum(['devnet', 'testnet', 'localnet', 'custom', 'mainnet'])
       .default('devnet'),

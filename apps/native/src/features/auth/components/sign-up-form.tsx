@@ -9,9 +9,8 @@ import {
 } from 'heroui-native'
 import { useState } from 'react'
 import { Text, View } from 'react-native'
-
-import { authClient } from '@/lib/auth-client'
-import { queryClient } from '@/utils/orpc'
+import { queryClient } from '@/src/shared/api/orpc'
+import { authClient } from '@/src/shared/auth/auth-client'
 
 function signUpHandler({
   name,

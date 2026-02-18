@@ -3,17 +3,40 @@ import type {
   SolanaAuthNonceResponse,
   SolanaAuthVerifyResponse,
 } from '@solana-mobile-stack/better-auth-solana/client'
-import { useMobileWallet } from '@wallet-ui/react-native-kit'
 import { useState } from 'react'
-import { Alert } from 'react-native'
-import { authClient } from '@/lib/auth-client'
-import { queryClient } from '@/utils/orpc'
+import { Alert, Platform } from 'react-native'
+import { queryClient } from '@/src/shared/api/orpc'
+import { authClient } from '@/src/shared/auth/auth-client'
+
+const noopWallet = () => ({
+  account: null,
+  connect: async () => ({}),
+  signIn: async () => ({ signature: '', message: '' }),
+})
+
+let useWallet = noopWallet
+
+if (Platform.OS === 'android') {
+  try {
+    useWallet = require('@wallet-ui/react-native-kit').useMobileWallet
+  } catch (e) {
+    console.warn('useMobileWallet not available:', e)
+  }
+}
 
 export function useSolanaSignIn() {
-  const { account, connect, signIn } = useMobileWallet()
+  const { account, connect, signIn } = useWallet()
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSignIn = async () => {
+    if (Platform.OS !== 'android') {
+      Alert.alert(
+        'Not Available',
+        'Solana sign in is only available on Android',
+      )
+      return
+    }
+
     setIsLoading(true)
     try {
       const activeAccount = account || (await connect())

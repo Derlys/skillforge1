@@ -6,7 +6,7 @@ import { env } from '@solana-mobile-stack/env/native'
 import { QueryCache, QueryClient } from '@tanstack/react-query'
 import { Platform } from 'react-native'
 
-import { authClient } from '@/lib/auth-client'
+import { authClient } from '@/src/shared/auth/auth-client'
 
 export const queryClient = new QueryClient({
   queryCache: new QueryCache({

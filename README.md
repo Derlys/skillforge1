@@ -76,7 +76,7 @@ bun run dev
 
 This starts:
 - Web app at http://localhost:3001
-- API server at http://localhost:3000
+- API server at http://localhost:3002 (configurable via PORT env var, defaults to 3002)
 
 ### 4. Build and Run the Mobile App
 

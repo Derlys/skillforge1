@@ -1,10 +1,41 @@
-import { useMobileWallet } from '@wallet-ui/react-native-kit'
 import { Button, Card } from 'heroui-native'
-import { Text, View } from 'react-native'
-import { ellipsify } from '@/utils/ellipsify'
+import { Platform, Text, View } from 'react-native'
+
+import { ellipsify } from '@/src/shared/utils/ellipsify'
+
+const noopWallet = () => ({
+  account: null,
+  connect: () => {},
+  disconnect: () => {},
+})
+
+let useWallet = noopWallet
+
+if (Platform.OS === 'android') {
+  try {
+    useWallet = require('@wallet-ui/react-native-kit').useMobileWallet
+  } catch (e) {
+    console.warn('useMobileWallet not available:', e)
+  }
+}
 
 export function SolanaConnect() {
-  const { account, connect, disconnect } = useMobileWallet()
+  const { account, connect, disconnect } = useWallet()
+
+  if (Platform.OS !== 'android') {
+    return (
+      <Card className="gap-4">
+        <Card.Body>
+          <View className="gap-1">
+            <Card.Title>Solana Wallet</Card.Title>
+            <Text className="text-muted text-xs">
+              Only available on Android
+            </Text>
+          </View>
+        </Card.Body>
+      </Card>
+    )
+  }
 
   return (
     <Card className="gap-4">
