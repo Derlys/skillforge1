@@ -1,1 +1,1 @@
-export { default } from '@/src/features/tabs/screens/tabs-home-screen'
+export { default } from '@/src/features/home/screens/home-screen'

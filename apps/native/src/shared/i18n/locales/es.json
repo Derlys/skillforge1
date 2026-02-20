@@ -1,0 +1,54 @@
+{
+  "landing": {
+    "title": "SkillForge",
+    "subtitle": "Servicios Profesionales en Solana",
+    "description": "Monetiza tu experiencia con pagos cripto-nativos",
+    "connectWallet": "Conectar Billetera",
+    "continueEmail": "Continuar con Email",
+    "poweredBy": "Desarrollado por Solana",
+    "or": "o",
+    "back": "Volver",
+    "skip": "Saltar"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Iniciar sesión",
+      "subtitle": "Ingresa tus credenciales para continuar",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "submit": "Entrar",
+      "noAccount": "¿No tienes cuenta?",
+      "signUp": "Regístrate",
+      "errorFields": "Por favor completa todos los campos",
+      "emailPlaceholder": "tu@email.com",
+      "error": "Error al iniciar sesión"
+    },
+    "signUp": {
+      "title": "Crear cuenta",
+      "subtitle": "Únete a SkillForge y comienza a trabajar",
+      "name": "Nombre",
+      "namePlaceholder": "Juan Pérez",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "tu@email.com",
+      "password": "Contraseña",
+      "submit": "Crear cuenta",
+      "haveAccount": "¿Ya tienes cuenta?",
+      "signIn": "Inicia sesión",
+      "errorFields": "Por favor completa todos los campos",
+      "error": "Error al registrarse"
+    },
+    "onboarding": {
+      "title": "Bienvenido a SkillForge",
+      "subtitle": "¿Cómo te gustaría empezar?",
+      "footer": "Siempre puedes cambiar de rol más tarde en la configuración de tu perfil.",
+      "findExpert": {
+        "title": "Busca un experto",
+        "description": "Explora y reserva sesiones con los mejores profesionales del ecosistema Solana."
+      },
+      "becomeMentor": {
+        "title": "Sé un mentor",
+        "description": "Comparte tu experiencia, guía a otros y gana SOL por tu tiempo."
+      }
+    }
+  }
+}

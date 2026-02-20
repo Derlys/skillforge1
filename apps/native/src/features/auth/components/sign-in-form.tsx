@@ -4,21 +4,32 @@ import {
   Input,
   Label,
   Spinner,
-  Surface,
   TextField,
 } from 'heroui-native'
 import { useState } from 'react'
-import { Text, View } from 'react-native'
+import { Image, Text, View } from 'react-native'
 import { queryClient } from '@/src/shared/api/orpc'
 import { authClient } from '@/src/shared/auth/auth-client'
 
-function SignIn() {
+import { useI18n } from '@/src/shared/i18n/use-i18n'
+
+interface SignInFormProps {
+  onSignUpPress?: () => void
+}
+
+export function SignIn({ onSignUpPress }: SignInFormProps) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const { t } = useI18n()
 
   async function handleLogin() {
+    if (!email || !password) {
+      setError(t('auth.signIn.errorFields'))
+      return
+    }
+
     setIsLoading(true)
     setError(null)
 
@@ -29,7 +40,7 @@ function SignIn() {
       },
       {
         onError(error) {
-          setError(error.error?.message || 'Failed to sign in')
+          setError(error.error?.message || t('auth.signIn.error'))
           setIsLoading(false)
         },
         onSuccess() {
@@ -45,45 +56,80 @@ function SignIn() {
   }
 
   return (
-    <Surface variant="secondary">
-      <Text className="mb-4 font-medium text-foreground">Sign In</Text>
+    <View className="w-full gap-8">
+      {/* Title */}
+      <View>
+        <Text className="mb-2 font-bold text-3xl text-white">
+          {t('auth.signIn.title')}
+        </Text>
+        <Text className="text-base text-white/60">
+          {t('auth.signIn.subtitle')}
+        </Text>
+      </View>
 
-      <FieldError isInvalid={!!error} className="mb-3">
-        {error}
-      </FieldError>
+      {/* Error Message */}
+      {error && (
+        <View className="rounded-2xl border border-danger/20 bg-danger/10 p-4">
+          <Text className="text-center font-medium text-danger text-sm">
+            {error}
+          </Text>
+        </View>
+      )}
 
-      <View className="gap-3">
+      {/* Form Fields */}
+      <View className="gap-5">
         <TextField>
-          <Label>Email</Label>
+          <Label className="mb-1 ml-1 font-medium text-sm text-white/80">
+            {t('auth.signIn.email')}
+          </Label>
           <Input
             value={email}
             onChangeText={setEmail}
-            placeholder="email@example.com"
+            placeholder={t('auth.signIn.emailPlaceholder')}
+            placeholderTextColor="rgba(255,255,255,0.3)"
             keyboardType="email-address"
             autoCapitalize="none"
+            className="h-14 rounded-2xl border-white/5 bg-[#1A1B23] px-4 text-white"
           />
         </TextField>
 
         <TextField>
-          <Label>Password</Label>
+          <Label className="mb-1 ml-1 font-medium text-sm text-white/80">
+            {t('auth.signIn.password')}
+          </Label>
           <Input
             value={password}
             onChangeText={setPassword}
             placeholder="••••••••"
+            placeholderTextColor="rgba(255,255,255,0.3)"
             secureTextEntry
+            className="h-14 rounded-2xl border-white/5 bg-[#1A1B23] px-4 text-white"
           />
         </TextField>
 
-        <Button onPress={handleLogin} isDisabled={isLoading} className="mt-1">
+        {/* Sign In Button */}
+        <Button
+          onPress={handleLogin}
+          isDisabled={isLoading}
+          className="mt-4 h-14 rounded-2xl bg-white active:bg-white/90"
+        >
           {isLoading ? (
-            <Spinner size="sm" color="default" />
+            <Spinner size="sm" color="black" />
           ) : (
-            <Button.Label>Sign In</Button.Label>
+            <Text className="font-bold text-black text-lg">
+              {t('auth.signIn.submit')}
+            </Text>
           )}
         </Button>
       </View>
-    </Surface>
+
+      {/* Sign Up Link */}
+      <View className="flex-row items-center justify-center gap-2 pt-2">
+        <Text className="text-white/40">{t('auth.signIn.noAccount')}</Text>
+        <Text className="font-bold text-white" onPress={onSignUpPress}>
+          {t('auth.signIn.signUp')}
+        </Text>
+      </View>
+    </View>
   )
 }
-
-export { SignIn }

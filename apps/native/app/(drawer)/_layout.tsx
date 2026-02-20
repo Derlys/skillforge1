@@ -5,9 +5,11 @@ import { useThemeColor } from 'heroui-native'
 import { useCallback } from 'react'
 import { Pressable, Text } from 'react-native'
 
+import { authClient } from '@/src/shared/auth/auth-client'
 import { ThemeToggle } from '@/src/shared/ui/theme-toggle'
 
-function DrawerLayout() {
+export default function DrawerLayout() {
+  const { data: session } = authClient.useSession()
   const themeColorForeground = useThemeColor('foreground')
   const themeColorBackground = useThemeColor('background')
 
@@ -16,6 +18,8 @@ function DrawerLayout() {
   return (
     <Drawer
       screenOptions={{
+        headerShown: !!session?.user,
+        swipeEnabled: !!session?.user,
         headerTintColor: themeColorForeground,
         headerStyle: { backgroundColor: themeColorBackground },
         headerTitleStyle: {
@@ -130,5 +134,3 @@ function DrawerLayout() {
     </Drawer>
   )
 }
-
-export default DrawerLayout
