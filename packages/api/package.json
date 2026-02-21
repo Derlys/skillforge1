@@ -1,0 +1,34 @@
+{
+  "name": "@solana-mobile-monorepo/api",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {
+    "check-types": "tsc -b"
+  },
+  "dependencies": {
+    "@orpc/client": "catalog:",
+    "@orpc/openapi": "catalog:",
+    "@orpc/server": "catalog:",
+    "@orpc/zod": "catalog:",
+    "@solana-mobile-monorepo/auth": "workspace:*",
+    "@solana-mobile-monorepo/db": "workspace:*",
+    "@solana-mobile-monorepo/env": "workspace:*",
+    "@solana-mobile-monorepo/solana-client": "workspace:*",
+    "@solana/kit": "catalog:",
+    "dotenv": "catalog:",
+    "drizzle-orm": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@solana-mobile-monorepo/config": "workspace:*",
+    "hono": "catalog:",
+    "typescript": "catalog:"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "scheme": "solana-mobile-monorepo",
+    "userInterfaceStyle": "automatic",
+    "orientation": "default",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "solana-mobile-monorepo",
+    "slug": "solana-mobile-monorepo",
+    "plugins": ["expo-font"],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "android": {
+      "package": "com.anonymous.solanamobilemonorepo"
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{
+  "extends": "@solana-mobile-monorepo/config/tsconfig.base.json"
+}
