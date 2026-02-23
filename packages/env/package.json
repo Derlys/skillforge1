@@ -1,5 +1,5 @@
 {
-  "name": "@solana-mobile-monorepo/env",
+  "name": "@skillforge1/env",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -17,7 +17,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@solana-mobile-monorepo/config": "workspace:*",
+    "@skillforge1/config": "workspace:*",
     "@types/bun": "catalog:",
     "typescript": "catalog:"
   }

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "@solana-mobile-monorepo/config": "workspace:*",
+    "@skillforge1/config": "workspace:*",
     "@types/bun": "catalog:",
     "typescript": "catalog:"
   },

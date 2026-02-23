@@ -1,8 +1,8 @@
 import { createORPCClient } from '@orpc/client'
 import { RPCLink } from '@orpc/client/fetch'
 import { createTanstackQueryUtils } from '@orpc/tanstack-query'
-import type { AppRouterClient } from '@solana-mobile-monorepo/api/routers/index'
-import { env } from '@solana-mobile-monorepo/env/native'
+import type { AppRouterClient } from '@skillforge1/api/routers/index'
+import { env } from '@skillforge1/env/native'
 import { QueryCache, QueryClient } from '@tanstack/react-query'
 import { Platform } from 'react-native'
 

@@ -5,13 +5,13 @@
     "": {
       "name": "solana-mobile-monorepo",
       "dependencies": {
-        "@solana-mobile-monorepo/env": "workspace:*",
+        "@skillforge1/env": "workspace:*",
         "dotenv": "catalog:",
         "zod": "catalog:",
       },
       "devDependencies": {
         "@biomejs/biome": "^2.2.0",
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "@types/bun": "catalog:",
         "lefthook": "^2.0.13",
         "turbo": "^2.6.3",
@@ -31,10 +31,10 @@
         "@orpc/tanstack-query": "catalog:",
         "@react-navigation/drawer": "^7.3.9",
         "@react-navigation/elements": "^2.8.1",
-        "@solana-mobile-monorepo/api": "workspace:*",
-        "@solana-mobile-monorepo/better-auth-solana": "workspace:*",
-        "@solana-mobile-monorepo/env": "workspace:*",
-        "@solana-mobile-monorepo/solana-client": "workspace:*",
+        "@skillforge1/api": "workspace:*",
+        "@skillforge1/better-auth-solana": "workspace:*",
+        "@skillforge1/env": "workspace:*",
+        "@skillforge1/solana-client": "workspace:*",
         "@solana/kit": "catalog:",
         "@stardazed/streams-text-encoding": "^1.0.2",
         "@tanstack/react-query": "^5.90.12",
@@ -73,7 +73,7 @@
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "@types/node": "^24.10.0",
         "@types/react": "~19.1.0",
         "typescript": "catalog:",
@@ -87,10 +87,10 @@
         "@orpc/openapi": "catalog:",
         "@orpc/server": "catalog:",
         "@orpc/zod": "catalog:",
-        "@solana-mobile-monorepo/api": "workspace:*",
-        "@solana-mobile-monorepo/auth": "workspace:*",
-        "@solana-mobile-monorepo/db": "workspace:*",
-        "@solana-mobile-monorepo/env": "workspace:*",
+        "@skillforge1/api": "workspace:*",
+        "@skillforge1/auth": "workspace:*",
+        "@skillforge1/db": "workspace:*",
+        "@skillforge1/env": "workspace:*",
         "ai": "catalog:",
         "better-auth": "catalog:",
         "dotenv": "catalog:",
@@ -98,7 +98,7 @@
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "@types/bun": "catalog:",
         "tsdown": "^0.16.5",
         "typescript": "catalog:",
@@ -113,11 +113,11 @@
         "@orpc/client": "catalog:",
         "@orpc/server": "catalog:",
         "@orpc/tanstack-query": "catalog:",
-        "@solana-mobile-monorepo/api": "workspace:*",
-        "@solana-mobile-monorepo/auth": "workspace:*",
-        "@solana-mobile-monorepo/better-auth-solana": "workspace:*",
-        "@solana-mobile-monorepo/env": "workspace:*",
-        "@solana-mobile-monorepo/solana-client": "workspace:*",
+        "@skillforge1/api": "workspace:*",
+        "@skillforge1/auth": "workspace:*",
+        "@skillforge1/better-auth-solana": "workspace:*",
+        "@skillforge1/env": "workspace:*",
+        "@skillforge1/solana-client": "workspace:*",
         "@solana-mobile/wallet-standard-mobile": "^0.4.4",
         "@solana-program/memo": "^0.10.0",
         "@solana/kit": "catalog:",
@@ -151,7 +151,7 @@
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "@tanstack/react-query-devtools": "^5.91.1",
         "@tanstack/react-router-devtools": "^1.141.1",
         "@testing-library/dom": "^10.4.0",
@@ -166,48 +166,48 @@
       },
     },
     "packages/api": {
-      "name": "@solana-mobile-monorepo/api",
+      "name": "@skillforge1/api",
       "dependencies": {
         "@orpc/client": "catalog:",
         "@orpc/openapi": "catalog:",
         "@orpc/server": "catalog:",
         "@orpc/zod": "catalog:",
-        "@solana-mobile-monorepo/auth": "workspace:*",
-        "@solana-mobile-monorepo/db": "workspace:*",
-        "@solana-mobile-monorepo/env": "workspace:*",
-        "@solana-mobile-monorepo/solana-client": "workspace:*",
+        "@skillforge1/auth": "workspace:*",
+        "@skillforge1/db": "workspace:*",
+        "@skillforge1/env": "workspace:*",
+        "@skillforge1/solana-client": "workspace:*",
         "@solana/kit": "catalog:",
         "dotenv": "catalog:",
         "drizzle-orm": "catalog:",
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "hono": "catalog:",
         "typescript": "catalog:",
       },
     },
     "packages/auth": {
-      "name": "@solana-mobile-monorepo/auth",
+      "name": "@skillforge1/auth",
       "dependencies": {
         "@better-auth/expo": "catalog:",
-        "@solana-mobile-monorepo/better-auth-solana": "workspace:*",
-        "@solana-mobile-monorepo/db": "workspace:*",
-        "@solana-mobile-monorepo/env": "workspace:*",
+        "@skillforge1/better-auth-solana": "workspace:*",
+        "@skillforge1/db": "workspace:*",
+        "@skillforge1/env": "workspace:*",
         "better-auth": "catalog:",
         "dotenv": "catalog:",
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "typescript": "catalog:",
       },
     },
     "packages/better-auth-solana": {
-      "name": "@solana-mobile-monorepo/better-auth-solana",
+      "name": "@skillforge1/better-auth-solana",
       "version": "0.0.0",
       "devDependencies": {
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "@types/bun": "catalog:",
         "typescript": "catalog:",
       },
@@ -217,27 +217,27 @@
       },
     },
     "packages/config": {
-      "name": "@solana-mobile-monorepo/config",
+      "name": "@skillforge1/config",
       "version": "0.0.0",
     },
     "packages/db": {
-      "name": "@solana-mobile-monorepo/db",
+      "name": "@skillforge1/db",
       "dependencies": {
         "@libsql/client": "catalog:",
-        "@solana-mobile-monorepo/env": "workspace:*",
+        "@skillforge1/env": "workspace:*",
         "dotenv": "catalog:",
         "drizzle-orm": "catalog:",
         "libsql": "catalog:",
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "drizzle-kit": "^0.31.8",
         "typescript": "catalog:",
       },
     },
     "packages/env": {
-      "name": "@solana-mobile-monorepo/env",
+      "name": "@skillforge1/env",
       "version": "0.0.0",
       "dependencies": {
         "@t3-oss/env-core": "^0.13.1",
@@ -245,20 +245,20 @@
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "@types/bun": "catalog:",
         "typescript": "catalog:",
       },
     },
     "packages/solana-client": {
-      "name": "@solana-mobile-monorepo/solana-client",
+      "name": "@skillforge1/solana-client",
       "version": "0.0.0",
       "dependencies": {
         "@solana/kit": "catalog:",
         "@solana/kit-plugin-rpc": "catalog:",
       },
       "devDependencies": {
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "@types/bun": "catalog:",
         "typescript": "catalog:",
       },
@@ -266,7 +266,7 @@
     "scripts": {
       "name": "scripts",
       "devDependencies": {
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "@types/bun": "catalog:",
         "typescript": "catalog:",
       },
@@ -274,7 +274,7 @@
     "turbo/generators": {
       "name": "generators",
       "devDependencies": {
-        "@solana-mobile-monorepo/config": "workspace:*",
+        "@skillforge1/config": "workspace:*",
         "@turbo/gen": "^2.8.3",
         "typescript": "catalog:",
       },
@@ -1050,19 +1050,19 @@
 
     "@sinonjs/fake-timers": ["@sinonjs/fake-timers@10.3.0", "", { "dependencies": { "@sinonjs/commons": "^3.0.0" } }, "sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA=="],
 
-    "@solana-mobile-monorepo/api": ["@solana-mobile-monorepo/api@workspace:packages/api"],
+    "@skillforge1/api": ["@skillforge1/api@workspace:packages/api"],
 
-    "@solana-mobile-monorepo/auth": ["@solana-mobile-monorepo/auth@workspace:packages/auth"],
+    "@skillforge1/auth": ["@skillforge1/auth@workspace:packages/auth"],
 
-    "@solana-mobile-monorepo/better-auth-solana": ["@solana-mobile-monorepo/better-auth-solana@workspace:packages/better-auth-solana"],
+    "@skillforge1/better-auth-solana": ["@skillforge1/better-auth-solana@workspace:packages/better-auth-solana"],
 
-    "@solana-mobile-monorepo/config": ["@solana-mobile-monorepo/config@workspace:packages/config"],
+    "@skillforge1/config": ["@skillforge1/config@workspace:packages/config"],
 
-    "@solana-mobile-monorepo/db": ["@solana-mobile-monorepo/db@workspace:packages/db"],
+    "@skillforge1/db": ["@skillforge1/db@workspace:packages/db"],
 
-    "@solana-mobile-monorepo/env": ["@solana-mobile-monorepo/env@workspace:packages/env"],
+    "@skillforge1/env": ["@skillforge1/env@workspace:packages/env"],
 
-    "@solana-mobile-monorepo/solana-client": ["@solana-mobile-monorepo/solana-client@workspace:packages/solana-client"],
+    "@skillforge1/solana-client": ["@skillforge1/solana-client@workspace:packages/solana-client"],
 
     "@solana-mobile/mobile-wallet-adapter-protocol": ["@solana-mobile/mobile-wallet-adapter-protocol@2.2.5", "", { "dependencies": { "@solana/codecs-strings": "^4.0.0", "@solana/wallet-standard": "^1.1.2", "@solana/wallet-standard-util": "^1.1.1", "@wallet-standard/core": "^1.0.3", "js-base64": "^3.7.5" }, "peerDependencies": { "react-native": ">0.69" } }, "sha512-kCI+0/umWm98M9g12ndpS56U6wBzq4XdhobCkDPF8qRDYX/iTU8CD+QMcalh7VgRT7GWEmySQvQdaugM0Chf0g=="],
 

@@ -5,6 +5,6 @@ export default defineConfig({
   entry: './src/index.ts',
   external: [/@loris-sandbox\/.*/],
   format: 'esm',
-  noExternal: [/@solana-mobile-monorepo\/.*/],
+  noExternal: [/@skillforge1\/.*/],
   outDir: './dist',
 })

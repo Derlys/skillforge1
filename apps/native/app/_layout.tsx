@@ -19,7 +19,7 @@ export const unstable_settings = {
 
 const cluster = createSolanaDevnet()
 const identity = {
-  name: 'Solana Mobile Monorepo',
+  name: 'Skillforge1',
   uri: 'https://solana.com',
   icon: 'favicon.png',
 }

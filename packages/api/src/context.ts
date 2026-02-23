@@ -1,6 +1,6 @@
-import { auth } from '@solana-mobile-monorepo/auth'
-import { env } from '@solana-mobile-monorepo/env/server'
-import { createSolanaClient } from '@solana-mobile-monorepo/solana-client'
+import { auth } from '@skillforge1/auth'
+import { env } from '@skillforge1/env/server'
+import { createSolanaClient } from '@skillforge1/solana-client'
 import type { Context as HonoContext } from 'hono'
 
 export type CreateContextOptions = {

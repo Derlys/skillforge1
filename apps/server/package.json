@@ -16,10 +16,10 @@
     "@orpc/openapi": "catalog:",
     "@orpc/server": "catalog:",
     "@orpc/zod": "catalog:",
-    "@solana-mobile-monorepo/api": "workspace:*",
-    "@solana-mobile-monorepo/auth": "workspace:*",
-    "@solana-mobile-monorepo/db": "workspace:*",
-    "@solana-mobile-monorepo/env": "workspace:*",
+    "@skillforge1/api": "workspace:*",
+    "@skillforge1/auth": "workspace:*",
+    "@skillforge1/db": "workspace:*",
+    "@skillforge1/env": "workspace:*",
     "ai": "catalog:",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
@@ -27,7 +27,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@solana-mobile-monorepo/config": "workspace:*",
+    "@skillforge1/config": "workspace:*",
     "@types/bun": "catalog:",
     "tsdown": "^0.16.5",
     "typescript": "catalog:"

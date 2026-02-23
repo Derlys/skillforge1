@@ -1,8 +1,8 @@
 import { expo } from '@better-auth/expo'
-import { solanaAuth } from '@solana-mobile-monorepo/better-auth-solana'
-import { db } from '@solana-mobile-monorepo/db'
-import * as schema from '@solana-mobile-monorepo/db/schema/auth'
-import { env } from '@solana-mobile-monorepo/env/server'
+import { solanaAuth } from '@skillforge1/better-auth-solana'
+import { db } from '@skillforge1/db'
+import * as schema from '@skillforge1/db/schema/auth'
+import { env } from '@skillforge1/env/server'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 
@@ -18,7 +18,7 @@ export const auth = betterAuth({
       ? [
           'exp://',
           'exp://**',
-          'solana-mobile-monorepo://**',
+          'skillforge1://**',
           'exp://192.168.*.*:*/**',
           'http://localhost:8081',
         ]

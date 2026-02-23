@@ -22,10 +22,10 @@
     "@orpc/tanstack-query": "catalog:",
     "@react-navigation/drawer": "^7.3.9",
     "@react-navigation/elements": "^2.8.1",
-    "@solana-mobile-monorepo/api": "workspace:*",
-    "@solana-mobile-monorepo/better-auth-solana": "workspace:*",
-    "@solana-mobile-monorepo/env": "workspace:*",
-    "@solana-mobile-monorepo/solana-client": "workspace:*",
+    "@skillforge1/api": "workspace:*",
+    "@skillforge1/better-auth-solana": "workspace:*",
+    "@skillforge1/env": "workspace:*",
+    "@skillforge1/solana-client": "workspace:*",
     "@solana/kit": "catalog:",
     "@stardazed/streams-text-encoding": "^1.0.2",
     "@tanstack/react-query": "^5.90.12",
@@ -64,7 +64,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@solana-mobile-monorepo/config": "workspace:*",
+    "@skillforge1/config": "workspace:*",
     "@types/node": "^24.10.0",
     "@types/react": "~19.1.0",
     "typescript": "catalog:"
