@@ -9,7 +9,7 @@ const noopWallet = () => ({
   disconnect: () => {},
 })
 
-let useWallet = noopWallet
+let useWallet: any = noopWallet
 
 if (Platform.OS === 'android') {
   try {

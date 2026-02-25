@@ -1,3 +1,5 @@
+declare const __DEV__: boolean
+
 import { createEnv } from '@t3-oss/env-core'
 import Constants from 'expo-constants'
 import { z } from 'zod'

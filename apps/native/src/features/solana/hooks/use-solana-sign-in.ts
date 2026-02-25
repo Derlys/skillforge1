@@ -10,11 +10,11 @@ import { authClient } from '@/src/shared/auth/auth-client'
 
 const noopWallet = () => ({
   account: null,
-  connect: async () => ({}),
-  signIn: async () => ({ signature: '', message: '' }),
+  connect: async () => ({ address: '' }),
+  signIn: async (_params: any) => ({ signature: '', message: '' }),
 })
 
-let useWallet = noopWallet
+let useWallet: any = noopWallet
 
 if (Platform.OS === 'android') {
   try {
