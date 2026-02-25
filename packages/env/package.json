@@ -1,5 +1,5 @@
 {
-  "name": "@skillforge1/env",
+  "name": "@solana-mobile-stack/env",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -17,7 +17,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@skillforge1/config": "workspace:*",
+    "@solana-mobile-stack/config": "workspace:*",
     "@types/bun": "catalog:",
     "typescript": "catalog:"
   }

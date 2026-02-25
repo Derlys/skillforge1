@@ -1,5 +1,5 @@
 {
-  "name": "@skillforge1/db",
+  "name": "@solana-mobile-stack/db",
   "type": "module",
   "exports": {
     ".": {
@@ -19,14 +19,14 @@
   },
   "dependencies": {
     "@libsql/client": "catalog:",
-    "@skillforge1/env": "workspace:*",
+    "@solana-mobile-stack/env": "workspace:*",
     "dotenv": "catalog:",
     "drizzle-orm": "catalog:",
     "libsql": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@skillforge1/config": "workspace:*",
+    "@solana-mobile-stack/config": "workspace:*",
     "drizzle-kit": "^0.31.8",
     "typescript": "catalog:"
   }

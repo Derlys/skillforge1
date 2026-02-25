@@ -26,7 +26,7 @@ export function PlaygroundUiWalletFeatureSignIn({
   onSuccess(account: UiWalletAccount | undefined): void
   wallet: UiWallet
 }) {
-  const [statement, setStatement] = useState('Sign in to Skillforge1')
+  const [statement, setStatement] = useState('Sign in to solana-mobile-stack')
   const { mutateAsync, isPending } = useHandleSiwsAuthMutation({
     account,
     wallet,

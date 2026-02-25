@@ -1,4 +1,4 @@
-# Skillforge1
+# Solana Mobile Stack
 
 A full-stack starter kit for building mobile apps on Solana. Built with Expo, React Native, and modern TypeScript tooling.
 
@@ -27,7 +27,7 @@ A full-stack starter kit for building mobile apps on Solana. Built with Expo, Re
 ## Prerequisites
 
 - [Bun](https://bun.sh) (v1.0+)
-- [Turso CLI](https://docs.turso.tech/cli/installation) (for local database)
+- [Docker](https://docker.com) (for local database)
 - Android Studio with an emulator, or a physical Android device
 
 ## Getting Started
@@ -35,29 +35,20 @@ A full-stack starter kit for building mobile apps on Solana. Built with Expo, Re
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/beeman/skillforge1.git my-app
-cd my-app
-bun rename
+git clone https://github.com/beeman/solana-mobile-stack.git
+cd solana-mobile-stack
 bun install
 ```
 
-Running `bun rename` without arguments detects that the directory name differs from the project name and prompts you to rename. You can also pass a name explicitly: `bun rename my-app`.
-
 ### 2. Set Up the Database
 
-Start a local libSQL database:
+Start the local database:
 
 ```bash
-bun run db:dev
+bun run db:up
 ```
 
-This starts a libSQL server on port 8080 using the [Turso CLI](https://docs.turso.tech/cli/installation).
-
-Alternatively, if you prefer Docker:
-
-```bash
-docker run --rm -p 8080:8080 ghcr.io/tursodatabase/libsql-server:latest
-```
+This starts a LibSQL server on port 8080. Add `-d` to run in the background: `bun run db:up -- -d`
 
 Copy the environment file:
 
@@ -85,7 +76,7 @@ bun run dev
 
 This starts:
 - Web app at http://localhost:3001
-- API server at http://localhost:3000
+- API server at http://localhost:3002 (configurable via PORT env var, defaults to 3002)
 
 ### 4. Build and Run the Mobile App
 
@@ -115,7 +106,7 @@ On the emulator, install a wallet app from the Play Store to test wallet connect
 ## Project Structure
 
 ```
-skillforge1/
+solana-mobile-stack/
 ├── apps/
 │   ├── native/      # Mobile app (React Native, Expo)
 │   ├── web/         # Web app (React, TanStack Start)
@@ -132,17 +123,17 @@ skillforge1/
 
 Edit `apps/server/.env` to configure the server:
 
-| Variable                       | Description | Default                         |
-|--------------------------------|-------------|---------------------------------|
-| `BETTER_AUTH_SECRET`           | Auth secret (min 32 chars). Generate with `openssl rand -hex 32` | —                               |
-| `BETTER_AUTH_URL`              | Server URL for auth callbacks | `http://localhost:3000`         |
-| `CORS_ORIGINS`                 | Comma-separated list of allowed origins for CORS | `http://localhost:3001,skillforge1://`        |
-| `DATABASE_URL`                 | Database connection URL | `http://localhost:8080`         |
-| `DATABASE_AUTH_TOKEN`          | Database auth token | `local`                         |
-| `SOLANA_ENDPOINT`              | Solana RPC endpoint | `https://api.devnet.solana.com` |
-| `SOLANA_CLUSTER`               | Solana cluster (devnet, mainnet, etc) | `devnet`                        |
-| `SOLANA_EMAIL_DOMAIN`          | Default domain for generated emails | `example.com`                   |
-| `GOOGLE_GENERATIVE_AI_API_KEY` | Optional. Enables AI chat feature | —                               |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `BETTER_AUTH_SECRET` | Auth secret (min 32 chars). Generate with `openssl rand -hex 32` | — |
+| `BETTER_AUTH_URL` | Server URL for auth callbacks | `http://localhost:3000` |
+| `CORS_ORIGIN` | Allowed origin for CORS | `http://localhost:3001` |
+| `DATABASE_URL` | Database connection URL | `http://localhost:8080` |
+| `DATABASE_AUTH_TOKEN` | Database auth token | `local` |
+| `SOLANA_ENDPOINT` | Solana RPC endpoint | `https://api.devnet.solana.com` |
+| `SOLANA_CLUSTER` | Solana cluster (devnet, mainnet, etc) | `devnet` |
+| `SOLANA_EMAIL_DOMAIN` | Default domain for generated emails | `example.com` |
+| `GOOGLE_GENERATIVE_AI_API_KEY` | Optional. Enables AI chat feature | — |
 
 ## Enabling AI Chat (Optional)
 
@@ -156,80 +147,24 @@ The app includes an AI chat feature powered by Google Gemini. To enable it:
    ```
 4. Restart the server
 
-## Deployment
-
-The project includes a `docker-compose.yml` for containerized deployment. It runs the database, server, and web app together with no ports exposed on the database.
-
-### Deploy on Dokploy
-
-1. Create a new **Compose** project pointing to your fork
-2. Set the compose path to `./docker-compose.yml`
-3. Configure environment variables and domains in Dokploy
-4. Deploy
-
-### Deploy with Docker Compose
-
-1. Create a `.env` file in the project root with your production values (see [Environment Variables](#environment-variables) for a full list).
-2. Add the following deployment-specific variables to your `.env` file:
-   ```dotenv
-   BETTER_AUTH_SECRET=<your-secret>
-   BETTER_AUTH_URL=https://your-api-domain.com
-   CORS_ORIGINS=https://your-web-domain.com
-   VITE_SERVER_URL=https://your-api-domain.com
-   ```
-3. Run:
-   ```bash
-   docker compose up -d --build
-   ```
-
-The compose file uses sensible defaults for all variables. For reverse proxy setups, point your domains to the exposed ports (`SERVER_PORT` defaults to 3000, `WEB_PORT` defaults to 3001).
-
 ## Available Scripts
 
 From the project root:
 
 | Command | Description |
 |---------|-------------|
-| `bun rename <name>` | Rename the project across all files |
-| `bun run build` | Build all apps |
-| `bun run check-types` | TypeScript type checking |
-| `bun run db:dev` | Start local database (Turso dev server on port 8080) |
-| `bun run db:push` | Push schema changes |
-| `bun run db:studio` | Open database UI |
 | `bun run dev` | Start all apps in development mode |
 | `bun run dev:native` | Start only the mobile app dev server |
-| `bun run dev:server` | Start only the API server |
 | `bun run dev:web` | Start only the web app |
+| `bun run dev:server` | Start only the API server |
+| `bun run build` | Build all apps |
+| `bun run check-types` | TypeScript type checking |
 | `bun run lint` | Run linting and formatting checks |
 | `bun run lint:fix` | Fix linting and formatting issues |
-| `bun run ruler:apply` | Regenerate AI agent config files |
-
-## AI Agent Configuration (Ruler)
-
-This project uses [Ruler](https://github.com/AugmentedReality-Danny/ruler) to manage AI coding assistant configurations. Ruler generates agent-specific config files (`CLAUDE.md`, `COPILOT.md`, etc.) from a single source of truth.
-
-### How it works
-
-```
-.ruler/
-├── ruler.toml      # Configuration (MCP servers, target agents)
-├── project.md      # Project instructions (edit this file)
-└── skills/         # Best practice rules for agents
-```
-
-1. Edit `.ruler/project.md` to update project instructions
-2. Run `bun run ruler:apply` to regenerate all agent config files
-3. The generated files (like `CLAUDE.md`) are committed to the repo
-
-### Configured MCP servers
-
-Ruler configures these MCP servers for AI agents:
-
-| Server | Purpose |
-|--------|---------|
-| context7 | Up-to-date library documentation |
-| shadcn | Component registry access |
-| better-auth | Auth framework assistance |
+| `bun run db:up` | Start the local database |
+| `bun run db:down` | Stop the local database |
+| `bun run db:push` | Push schema changes |
+| `bun run db:studio` | Open database UI |
 
 ## Troubleshooting
 
@@ -245,8 +180,9 @@ Make sure you've run `bun run android` at least once from `apps/native/` to crea
 
 ### Database connection errors
 
-- Verify the database is running: `bun run db:dev`
-- Ensure `DATABASE_URL` in `.env` matches your setup (default: `http://localhost:8080`)
+- Verify Docker is running: `docker ps`
+- Check that the database is up: `bun run db:up`
+- Ensure `DATABASE_URL` in `.env` matches your setup
 
 ## License
 

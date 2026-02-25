@@ -1,14 +1,15 @@
+import { devToolsMiddleware } from '@ai-sdk/devtools'
 import { google } from '@ai-sdk/google'
 import { OpenAPIHandler } from '@orpc/openapi/fetch'
 import { OpenAPIReferencePlugin } from '@orpc/openapi/plugins'
 import { onError } from '@orpc/server'
 import { RPCHandler } from '@orpc/server/fetch'
 import { ZodToJsonSchemaConverter } from '@orpc/zod/zod4'
-import { createContext } from '@skillforge1/api/context'
-import { appRouter } from '@skillforge1/api/routers/index'
-import { auth } from '@skillforge1/auth'
-import { env } from '@skillforge1/env/server'
-import { convertToModelMessages, streamText } from 'ai'
+import { createContext } from '@solana-mobile-stack/api/context'
+import { appRouter } from '@solana-mobile-stack/api/routers/index'
+import { auth } from '@solana-mobile-stack/auth'
+import { env } from '@solana-mobile-stack/env/server'
+import { convertToModelMessages, streamText, wrapLanguageModel } from 'ai'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
@@ -19,7 +20,7 @@ app.use(logger())
 app.use(
   '/*',
   cors({
-    origin: env.CORS_ORIGINS,
+    origin: env.CORS_ORIGIN,
     allowMethods: ['GET', 'POST', 'OPTIONS'],
     allowHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
@@ -76,8 +77,12 @@ app.use('/*', async (c, next) => {
 app.post('/ai', async (c) => {
   const body = await c.req.json()
   const uiMessages = body.messages || []
-  const result = streamText({
+  const model = wrapLanguageModel({
     model: google('gemini-2.5-flash'),
+    middleware: devToolsMiddleware(),
+  })
+  const result = streamText({
+    model,
     messages: await convertToModelMessages(uiMessages),
   })
 

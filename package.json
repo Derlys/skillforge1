@@ -1,11 +1,10 @@
 {
-  "name": "skillforge1",
+  "name": "solana-mobile-stack",
   "private": true,
   "workspaces": {
     "packages": [
       "apps/*",
       "packages/*",
-      "scripts",
       "turbo/generators"
     ],
     "catalog": {
@@ -21,7 +20,7 @@
       "@types/react-dom": "^19.2.3",
       "@solana/kit": "^6.0.0",
       "@solana/kit-plugin-rpc": "^0.2.0",
-      "@types/bun": "^1.3.9",
+      "@types/bun": "^1.3.8",
       "ai": "^6.0.3",
       "better-auth": "^1.4.18",
       "dotenv": "^17.2.2",
@@ -38,42 +37,44 @@
   "scripts": {
     "build": "turbo build",
     "check-types": "turbo check-types",
-    "db:dev": "turso dev --port 8080",
-    "db:generate": "turbo -F @skillforge1/db db:generate",
-    "db:local": "turbo -F @skillforge1/db db:local",
-    "db:migrate": "turbo -F @skillforge1/db db:migrate",
-    "db:push": "turbo -F @skillforge1/db db:push",
-    "db:studio": "turbo -F @skillforge1/db db:studio",
+    "db:generate": "turbo -F @solana-mobile-stack/db db:generate",
+    "db:local": "turbo -F @solana-mobile-stack/db db:local",
+    "db:migrate": "turbo -F @solana-mobile-stack/db db:migrate",
+    "db:push": "turbo -F @solana-mobile-stack/db db:push",
+    "db:studio": "turbo -F @solana-mobile-stack/db db:studio",
+    "db:up": "docker compose up",
+    "db:down": "docker compose down",
     "dev": "turbo dev",
     "dev:native": "turbo -F native dev",
     "dev:server": "turbo -F server dev",
     "dev:web": "turbo -F web dev",
-    "docker:build:server": "docker build -f Dockerfile.server -t ghcr.io/beeman/skillforge1-server .",
-    "docker:build:web": "docker build -f Dockerfile.web -t ghcr.io/beeman/skillforge1-web .",
-    "docker:push:server": "docker push ghcr.io/beeman/skillforge1-server",
-    "docker:push:web": "docker push ghcr.io/beeman/skillforge1-web",
-    "docker:run:server": "docker run --rm --name skillforge1-server --init --stop-signal=SIGINT -it --env-file apps/server/.env -p 3000:3000 ghcr.io/beeman/skillforge1-server",
-    "docker:run:web": "docker run --rm --name skillforge1-web --init --stop-signal=SIGINT -it -p 3001:3001 ghcr.io/beeman/skillforge1-web",
+    "docker:build:server": "docker build -f Dockerfile.server -t ghcr.io/beeman/solana-mobile-stack-server .",
+    "docker:build:web": "docker build -f Dockerfile.web -t ghcr.io/beeman/solana-mobile-stack-web .",
+    "docker:push:server": "docker push ghcr.io/beeman/solana-mobile-stack-server",
+    "docker:push:web": "docker push ghcr.io/beeman/solana-mobile-stack-web",
+    "docker:run:server": "docker run --rm --name solana-mobile-stack-server --init --stop-signal=SIGINT -it --env-file apps/server/.env -p 3000:3000 ghcr.io/beeman/solana-mobile-stack-server",
+    "docker:run:web": "docker run --rm --name solana-mobile-stack-web --init --stop-signal=SIGINT -it -p 3001:3001 ghcr.io/beeman/solana-mobile-stack-web",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "postinstall": "bun run scripts/copy-env.ts",
-    "rename": "bun scripts/rename.ts",
     "ruler:apply": "bunx @intellectronica/ruler@latest apply --local-only",
     "start:web": "turbo -F web start",
     "test": "turbo test"
   },
   "dependencies": {
-    "@skillforge1/env": "workspace:*",
+    "@solana-mobile-stack/env": "workspace:*",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.0",
-    "@skillforge1/config": "workspace:*",
+    "@solana-mobile-stack/config": "workspace:*",
     "@types/bun": "catalog:",
+    "babel-preset-expo": "^54.0.10",
+    "expo-build-properties": "^1.0.10",
     "lefthook": "^2.0.13",
+    "native": "workspace:*",
     "turbo": "^2.6.3",
     "typescript": "catalog:"
   },
-  "packageManager": "bun@1.3.9"
+  "packageManager": "bun@1.3.8"
 }

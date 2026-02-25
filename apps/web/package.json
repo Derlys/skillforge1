@@ -4,10 +4,10 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "check-types": "tsc -p tsconfig.json --noEmit",
-    "dev": "vite dev",
     "serve": "vite preview",
-    "start": "bun server.ts"
+    "dev": "vite dev",
+    "start": "bun server.ts",
+    "check-types": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@ai-sdk/react": "catalog:",
@@ -16,11 +16,11 @@
     "@orpc/client": "catalog:",
     "@orpc/server": "catalog:",
     "@orpc/tanstack-query": "catalog:",
-    "@skillforge1/api": "workspace:*",
-    "@skillforge1/auth": "workspace:*",
-    "@skillforge1/better-auth-solana": "workspace:*",
-    "@skillforge1/env": "workspace:*",
-    "@skillforge1/solana-client": "workspace:*",
+    "@solana-mobile-stack/api": "workspace:*",
+    "@solana-mobile-stack/auth": "workspace:*",
+    "@solana-mobile-stack/better-auth-solana": "workspace:*",
+    "@solana-mobile-stack/env": "workspace:*",
+    "@solana-mobile-stack/solana-client": "workspace:*",
     "@solana-mobile/wallet-standard-mobile": "^0.4.4",
     "@solana-program/memo": "^0.10.0",
     "@solana/kit": "catalog:",
@@ -54,7 +54,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@skillforge1/config": "workspace:*",
+    "@solana-mobile-stack/config": "workspace:*",
     "@tanstack/react-query-devtools": "^5.91.1",
     "@tanstack/react-router-devtools": "^1.141.1",
     "@testing-library/dom": "^10.4.0",

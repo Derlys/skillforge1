@@ -1,4 +1,3 @@
-import type { SolanaClient } from '@skillforge1/solana-client'
 import {
   appendTransactionMessageInstruction,
   assertIsTransactionMessageWithSingleSendingSigner,
@@ -9,6 +8,7 @@ import {
   setTransactionMessageLifetimeUsingBlockhash,
   signAndSendTransactionMessageWithSigners,
 } from '@solana/kit'
+import type { SolanaClient } from '@solana-mobile-stack/solana-client'
 import { getAddMemoInstruction } from '@solana-program/memo'
 import type { SolanaClusterId, UiWalletAccount } from '@wallet-ui/react'
 import { useWalletAccountTransactionSendingSigner } from '@wallet-ui/react'

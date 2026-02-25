@@ -1,4 +1,4 @@
-import { getBalance } from '@skillforge1/solana-client'
+import { getBalance } from '@solana-mobile-stack/solana-client'
 import z from 'zod'
 
 import { publicProcedure } from '../index'

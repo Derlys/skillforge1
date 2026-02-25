@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@skillforge1/config": "workspace:*",
+    "@solana-mobile-stack/config": "workspace:*",
     "@turbo/gen": "^2.8.3",
     "typescript": "catalog:"
   },

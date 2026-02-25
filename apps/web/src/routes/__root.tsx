@@ -30,7 +30,7 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Skillforge1',
+        title: 'solana-mobile-stack',
       },
     ],
     links: [

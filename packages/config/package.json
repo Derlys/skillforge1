@@ -1,5 +1,5 @@
 {
-  "name": "@skillforge1/config",
+  "name": "@solana-mobile-stack/config",
   "version": "0.0.0",
   "private": true,
   "scripts": {

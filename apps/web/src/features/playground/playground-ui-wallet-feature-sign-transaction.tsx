@@ -1,4 +1,3 @@
-import type { SolanaClient } from '@skillforge1/solana-client'
 import {
   appendTransactionMessageInstruction,
   assertIsTransactionWithBlockhashLifetime,
@@ -11,6 +10,7 @@ import {
   signTransactionMessageWithSigners,
 } from '@solana/kit'
 import { useWalletAccountTransactionSigner } from '@solana/react'
+import type { SolanaClient } from '@solana-mobile-stack/solana-client'
 import { getAddMemoInstruction } from '@solana-program/memo'
 import type { SolanaClusterId, UiWalletAccount } from '@wallet-ui/react'
 import { LucideKey } from 'lucide-react'

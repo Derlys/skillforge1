@@ -1,3 +1,3 @@
 {
-  "extends": "@skillforge1/config/tsconfig.base.json"
+  "extends": "@solana-mobile-stack/config/tsconfig.base.json"
 }
