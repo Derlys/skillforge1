@@ -1,12 +1,12 @@
 import { createORPCClient } from '@orpc/client'
 import { RPCLink } from '@orpc/client/fetch'
 import { createTanstackQueryUtils } from '@orpc/tanstack-query'
-import type { AppRouterClient } from '@solana-mobile-monorepo/api/routers/index'
-import { env } from '@solana-mobile-monorepo/env/native'
+import type { AppRouterClient } from '@solana-mobile-stack/api/routers/index'
+import { env } from '@solana-mobile-stack/env/native'
 import { QueryCache, QueryClient } from '@tanstack/react-query'
 import { Platform } from 'react-native'
 
-import { authClient } from '@/lib/auth-client'
+import { authClient } from '@/src/shared/auth/auth-client'
 
 export const queryClient = new QueryClient({
   queryCache: new QueryCache({

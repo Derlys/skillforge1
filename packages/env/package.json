@@ -1,5 +1,5 @@
 {
-  "name": "@solana-mobile-monorepo/env",
+  "name": "@solana-mobile-stack/env",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -14,11 +14,13 @@
   "dependencies": {
     "@t3-oss/env-core": "^0.13.1",
     "dotenv": "catalog:",
+    "expo-constants": "^18.0.13",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@solana-mobile-monorepo/config": "workspace:*",
+    "@solana-mobile-stack/config": "workspace:*",
     "@types/bun": "catalog:",
+    "@types/react-native": "^0.73.0",
     "typescript": "catalog:"
   }
 }

@@ -1,20 +1,23 @@
 {
   "expo": {
-    "scheme": "solana-mobile-monorepo",
+    "scheme": "skillforge1",
     "userInterfaceStyle": "automatic",
     "orientation": "default",
     "web": {
       "bundler": "metro"
     },
-    "name": "solana-mobile-monorepo",
-    "slug": "solana-mobile-monorepo",
+    "name": "skillforge1",
+    "slug": "skillforge1",
     "plugins": ["expo-font"],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
     },
     "android": {
-      "package": "com.anonymous.solanamobilemonorepo"
+      "package": "com.anonymous.skillforge1"
+    },
+    "ios": {
+      "bundleIdentifier": "com.anonymous.skillforge1"
     }
   }
 }

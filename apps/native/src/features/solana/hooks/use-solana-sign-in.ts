@@ -2,18 +2,41 @@ import { getBase58Decoder, getBase64Encoder } from '@solana/kit'
 import type {
   SolanaAuthNonceResponse,
   SolanaAuthVerifyResponse,
-} from '@solana-mobile-monorepo/better-auth-solana/client'
-import { useMobileWallet } from '@wallet-ui/react-native-kit'
+} from '@solana-mobile-stack/better-auth-solana/client'
 import { useState } from 'react'
-import { Alert } from 'react-native'
-import { authClient } from '@/lib/auth-client'
-import { queryClient } from '@/utils/orpc'
+import { Alert, Platform } from 'react-native'
+import { queryClient } from '@/src/shared/api/orpc'
+import { authClient } from '@/src/shared/auth/auth-client'
+
+const noopWallet = () => ({
+  account: null,
+  connect: async () => ({ address: '' }),
+  signIn: async (_params: any) => ({ signature: '', message: '' }),
+})
+
+let useWallet: any = noopWallet
+
+if (Platform.OS === 'android') {
+  try {
+    useWallet = require('@wallet-ui/react-native-kit').useMobileWallet
+  } catch (e) {
+    console.warn('useMobileWallet not available:', e)
+  }
+}
 
 export function useSolanaSignIn() {
-  const { account, connect, signIn } = useMobileWallet()
+  const { account, connect, signIn } = useWallet()
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSignIn = async () => {
+    if (Platform.OS !== 'android') {
+      Alert.alert(
+        'Not Available',
+        'Solana sign in is only available on Android',
+      )
+      return
+    }
+
     setIsLoading(true)
     try {
       const activeAccount = account || (await connect())
@@ -33,7 +56,7 @@ export function useSolanaSignIn() {
         address,
         domain: nonce.domain,
         nonce: nonce.nonce,
-        statement: 'Sign in to Solana Mobile Monorepo',
+        statement: 'Sign in to solana-mobile-stack',
       })
 
       // Convert MWA result: both are Base64 strings

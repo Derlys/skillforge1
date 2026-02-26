@@ -1,7 +1,7 @@
 import { Card } from 'heroui-native'
 import { View } from 'react-native'
 
-import { Container } from '@/components/container'
+import { Container } from '@/src/shared/ui/container'
 
 export default function TabTwo() {
   return (

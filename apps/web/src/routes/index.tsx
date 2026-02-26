@@ -15,7 +15,7 @@ function HomeComponent() {
       <div className="grid gap-6">
         <section className="rounded-lg border p-4">
           <pre className="overflow-x-auto font-mono text-sm">
-            Solana Mobile Monorepo
+            solana-mobile-stack
           </pre>
         </section>
         <section className="rounded-lg border p-4">

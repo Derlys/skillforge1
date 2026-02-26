@@ -1,5 +1,5 @@
 import { Button, Spinner } from 'heroui-native'
-import { useSolanaSignIn } from '@/hooks/use-solana-sign-in'
+import { useSolanaSignIn } from '@/src/features/solana/hooks/use-solana-sign-in'
 
 export function SolanaSignInButton() {
   const { handleSignIn, isLoading } = useSolanaSignIn()

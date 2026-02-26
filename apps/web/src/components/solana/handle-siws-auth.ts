@@ -7,7 +7,7 @@ import {
 import type {
   SolanaAuthNonceResponse,
   SolanaAuthVerifyResponse,
-} from '@solana-mobile-monorepo/better-auth-solana/types'
+} from '@solana-mobile-stack/better-auth-solana/types'
 import type {
   SolanaSignInInput,
   SolanaSignInOutput,

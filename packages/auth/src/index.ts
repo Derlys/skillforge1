@@ -1,8 +1,8 @@
 import { expo } from '@better-auth/expo'
-import { solanaAuth } from '@solana-mobile-monorepo/better-auth-solana'
-import { db } from '@solana-mobile-monorepo/db'
-import * as schema from '@solana-mobile-monorepo/db/schema/auth'
-import { env } from '@solana-mobile-monorepo/env/server'
+import { solanaAuth } from '@solana-mobile-stack/better-auth-solana'
+import { db } from '@solana-mobile-stack/db'
+import * as schema from '@solana-mobile-stack/db/schema/auth'
+import { env } from '@solana-mobile-stack/env/server'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 
@@ -13,12 +13,14 @@ export const auth = betterAuth({
     schema: schema,
   }),
   trustedOrigins: [
-    ...env.CORS_ORIGINS,
+    env.CORS_ORIGIN,
+    'solana-mobile-stack://',
+    'mybettertapp://',
     ...(env.NODE_ENV === 'development'
       ? [
           'exp://',
           'exp://**',
-          'solana-mobile-monorepo://**',
+          'solana-mobile-stack://**',
           'exp://192.168.*.*:*/**',
           'http://localhost:8081',
         ]
