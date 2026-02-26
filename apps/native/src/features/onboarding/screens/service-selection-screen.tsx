@@ -1,6 +1,5 @@
 import { Ionicons } from '@expo/vector-icons'
 import { router } from 'expo-router'
-import React from 'react'
 import { Pressable, SafeAreaView, StatusBar, Text, View } from 'react-native'
 
 import { useI18n } from '@/src/shared/i18n/use-i18n'
@@ -23,15 +22,19 @@ function SelectionCard({
   return (
     <Pressable
       onPress={onPress}
-      className="w-full flex-row items-center gap-6 rounded-3xl border border-white/5 bg-[#161721] p-6 active:bg-[#1C1D29]"
+      className="w-full flex-row items-center gap-6 rounded-3xl border border-black/5 bg-white p-6 active:bg-[#1C1D29] dark:border-white/5 dark:bg-[#161721]"
     >
       <View className="h-14 w-14 items-center justify-center rounded-2xl bg-[#252631]">
         <Ionicons name={icon} size={28} color={iconColor} />
       </View>
 
       <View className="flex-1 gap-1">
-        <Text className="font-bold text-white text-xl">{title}</Text>
-        <Text className="text-sm text-white/40 leading-5">{description}</Text>
+        <Text className="font-bold text-gray-900 text-xl dark:text-white">
+          {title}
+        </Text>
+        <Text className="text-gray-900/40 text-sm leading-5 dark:text-white/40">
+          {description}
+        </Text>
       </View>
 
       <Ionicons
@@ -68,7 +71,7 @@ export function ServiceSelectionScreen({ onBack }: { onBack?: () => void }) {
       {/* Back button */}
       <View className="flex-row px-6 pt-4">
         <Pressable
-          className="h-10 w-10 items-center justify-center rounded-full border border-white/5 bg-white/5 active:bg-white/10"
+          className="h-10 w-10 items-center justify-center rounded-full border border-black/5 bg-black/5 active:bg-white/10 dark:border-white/5 dark:bg-white/5"
           onPress={handleBack}
         >
           <Ionicons name="arrow-back" size={20} color="white" />
@@ -78,10 +81,10 @@ export function ServiceSelectionScreen({ onBack }: { onBack?: () => void }) {
       <View className="flex-1 px-6 pt-8">
         {/* Header */}
         <View className="mb-12 items-center">
-          <Text className="mb-3 font-bold text-3xl text-white">
+          <Text className="mb-3 font-bold text-3xl text-gray-900 dark:text-white">
             {t('auth.onboarding.title')}
           </Text>
-          <Text className="text-lg text-white/60">
+          <Text className="text-gray-900 text-lg dark:text-white/60">
             {t('auth.onboarding.subtitle')}
           </Text>
         </View>
@@ -107,7 +110,7 @@ export function ServiceSelectionScreen({ onBack }: { onBack?: () => void }) {
 
         {/* Footer info */}
         <View className="flex-1 justify-end pb-12">
-          <Text className="px-12 text-center text-white/30 text-xs leading-5">
+          <Text className="px-12 text-center text-gray-900 text-xs leading-5 dark:text-white/30">
             {t('auth.onboarding.footer')}
           </Text>
         </View>

@@ -15,10 +15,10 @@ export default function NotFoundScreen() {
             className="max-w-sm items-center rounded-lg p-6"
           >
             <Text className="mb-3 text-4xl">🤔</Text>
-            <Text className="mb-1 font-medium text-foreground text-lg">
+            <Text className="mb-1 font-medium text-gray-900 text-lg dark:text-white">
               Page Not Found
             </Text>
-            <Text className="mb-4 text-center text-muted text-sm">
+            <Text className="mb-4 text-center text-gray-500 text-sm dark:text-[#8A8A93]">
               The page you're looking for doesn't exist.
             </Text>
             <Link href="/" asChild>

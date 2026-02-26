@@ -1,11 +1,4 @@
-import {
-  Button,
-  FieldError,
-  Input,
-  Label,
-  Spinner,
-  TextField,
-} from 'heroui-native'
+import { Button, Input, Label, Spinner, TextField } from 'heroui-native'
 import { useState } from 'react'
 import { Text, View } from 'react-native'
 import { queryClient } from '@/src/shared/api/orpc'
@@ -95,10 +88,10 @@ export function SignUp({ onSignInPress }: SignUpFormProps) {
     <View className="w-full gap-8">
       {/* Title */}
       <View>
-        <Text className="mb-2 font-bold text-3xl text-white">
+        <Text className="mb-2 font-bold text-3xl text-gray-900 dark:text-white">
           {t('auth.signUp.title')}
         </Text>
-        <Text className="text-base text-white/60">
+        <Text className="text-base text-gray-900 dark:text-white/60">
           {t('auth.signUp.subtitle')}
         </Text>
       </View>
@@ -115,7 +108,7 @@ export function SignUp({ onSignInPress }: SignUpFormProps) {
       {/* Form Fields */}
       <View className="gap-5">
         <TextField>
-          <Label className="mb-1 ml-1 font-medium text-sm text-white/80">
+          <Label className="mb-1 ml-1 font-medium text-gray-900/80 text-sm dark:text-white/80">
             {t('auth.signUp.name')}
           </Label>
           <Input
@@ -123,12 +116,12 @@ export function SignUp({ onSignInPress }: SignUpFormProps) {
             onChangeText={setName}
             placeholder={t('auth.signUp.namePlaceholder')}
             placeholderTextColor="rgba(255,255,255,0.3)"
-            className="h-14 rounded-2xl border-white/5 bg-[#1A1B23] px-4 text-white"
+            className="h-14 rounded-2xl border-black/5 bg-[#1A1B23] px-4 text-gray-900 dark:border-white/5 dark:text-white"
           />
         </TextField>
 
         <TextField>
-          <Label className="mb-1 ml-1 font-medium text-sm text-white/80">
+          <Label className="mb-1 ml-1 font-medium text-gray-900/80 text-sm dark:text-white/80">
             {t('auth.signUp.email')}
           </Label>
           <Input
@@ -138,12 +131,12 @@ export function SignUp({ onSignInPress }: SignUpFormProps) {
             placeholderTextColor="rgba(255,255,255,0.3)"
             keyboardType="email-address"
             autoCapitalize="none"
-            className="h-14 rounded-2xl border-white/5 bg-[#1A1B23] px-4 text-white"
+            className="h-14 rounded-2xl border-black/5 bg-[#1A1B23] px-4 text-gray-900 dark:border-white/5 dark:text-white"
           />
         </TextField>
 
         <TextField>
-          <Label className="mb-1 ml-1 font-medium text-sm text-white/80">
+          <Label className="mb-1 ml-1 font-medium text-gray-900/80 text-sm dark:text-white/80">
             {t('auth.signUp.password')}
           </Label>
           <Input
@@ -152,7 +145,7 @@ export function SignUp({ onSignInPress }: SignUpFormProps) {
             placeholder="••••••••"
             placeholderTextColor="rgba(255,255,255,0.3)"
             secureTextEntry
-            className="h-14 rounded-2xl border-white/5 bg-[#1A1B23] px-4 text-white"
+            className="h-14 rounded-2xl border-black/5 bg-[#1A1B23] px-4 text-gray-900 dark:border-white/5 dark:text-white"
           />
         </TextField>
 
@@ -174,8 +167,13 @@ export function SignUp({ onSignInPress }: SignUpFormProps) {
 
       {/* Sign In Link */}
       <View className="flex-row items-center justify-center gap-2 pt-2">
-        <Text className="text-white/40">{t('auth.signUp.haveAccount')}</Text>
-        <Text className="font-bold text-white" onPress={onSignInPress}>
+        <Text className="text-gray-900/40 dark:text-white/40">
+          {t('auth.signUp.haveAccount')}
+        </Text>
+        <Text
+          className="font-bold text-gray-900 dark:text-white"
+          onPress={onSignInPress}
+        >
           {t('auth.signUp.signIn')}
         </Text>
       </View>

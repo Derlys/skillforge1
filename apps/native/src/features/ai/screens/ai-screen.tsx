@@ -69,7 +69,7 @@ export default function AIScreen() {
             <FieldError isInvalid className="mb-2">
               {error.message}
             </FieldError>
-            <Text className="text-center text-muted text-xs">
+            <Text className="text-center text-gray-500 text-xs dark:text-[#8A8A93]">
               Please check your connection and try again.
             </Text>
           </Surface>
@@ -86,10 +86,10 @@ export default function AIScreen() {
       >
         <View className="flex-1 px-4 py-4">
           <View className="mb-4 py-4">
-            <Text className="font-semibold text-2xl text-foreground tracking-tight">
+            <Text className="font-semibold text-2xl text-gray-900 tracking-tight dark:text-white">
               AI Chat
             </Text>
-            <Text className="mt-1 text-muted text-sm">
+            <Text className="mt-1 text-gray-500 text-sm dark:text-[#8A8A93]">
               Chat with our AI assistant
             </Text>
           </View>
@@ -106,7 +106,7 @@ export default function AIScreen() {
                   size={32}
                   color={mutedColor}
                 />
-                <Text className="mt-3 text-muted text-sm">
+                <Text className="mt-3 text-gray-500 text-sm dark:text-[#8A8A93]">
                   Ask me anything to get started
                 </Text>
               </View>
@@ -118,7 +118,7 @@ export default function AIScreen() {
                     variant={message.role === 'user' ? 'tertiary' : 'secondary'}
                     className={`rounded-lg p-3 ${message.role === 'user' ? 'ml-10' : 'mr-10'}`}
                   >
-                    <Text className="mb-1 font-medium text-muted text-xs">
+                    <Text className="mb-1 font-medium text-gray-500 text-xs dark:text-[#8A8A93]">
                       {message.role === 'user' ? 'You' : 'AI'}
                     </Text>
                     <View className="gap-1">
@@ -126,14 +126,14 @@ export default function AIScreen() {
                         part.type === 'text' ? (
                           <Text
                             key={`${message.id}-${i}`}
-                            className="text-foreground text-sm leading-relaxed"
+                            className="text-gray-900 text-sm leading-relaxed dark:text-white"
                           >
                             {part.text}
                           </Text>
                         ) : (
                           <Text
                             key={`${message.id}-${i}`}
-                            className="text-foreground text-sm leading-relaxed"
+                            className="text-gray-900 text-sm leading-relaxed dark:text-white"
                           >
                             {JSON.stringify(part)}
                           </Text>

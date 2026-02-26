@@ -38,17 +38,17 @@ export default function SolanaScreen() {
         <View className="mb-4 py-4">
           <View className="flex-row items-center gap-2">
             <Ionicons name="wallet-outline" size={24} color={foregroundColor} />
-            <Text className="font-semibold text-2xl text-foreground tracking-tight">
+            <Text className="font-semibold text-2xl text-gray-900 tracking-tight dark:text-white">
               Solana Balance
             </Text>
           </View>
-          <Text className="mt-1 text-muted text-sm">
+          <Text className="mt-1 text-gray-500 text-sm dark:text-[#8A8A93]">
             Check the balance of any Solana address
           </Text>
         </View>
 
         <Surface variant="secondary" className="mb-6 rounded-lg p-4">
-          <Text className="mb-2 font-medium text-foreground text-sm">
+          <Text className="mb-2 font-medium text-gray-900 text-sm dark:text-white">
             Wallet Address
           </Text>
           <View className="flex-row items-center gap-2">
@@ -100,14 +100,14 @@ export default function SolanaScreen() {
                 size={32}
                 color={mutedColor}
               />
-              <Text className="mt-3 text-center text-muted text-sm italic">
+              <Text className="mt-3 text-center text-gray-500 text-sm italic dark:text-[#8A8A93]">
                 Enter an address and click search to check the balance
               </Text>
             </View>
           ) : balanceMutation.isPending ? (
             <View className="items-center py-6">
               <Spinner size="lg" />
-              <Text className="mt-3 text-muted text-sm">
+              <Text className="mt-3 text-gray-500 text-sm dark:text-[#8A8A93]">
                 Fetching balance...
               </Text>
             </View>
@@ -124,9 +124,11 @@ export default function SolanaScreen() {
             </View>
           ) : (
             <View>
-              <Text className="text-muted text-sm">Current Balance</Text>
+              <Text className="text-gray-500 text-sm dark:text-[#8A8A93]">
+                Current Balance
+              </Text>
               <View className="mt-2 flex-row items-baseline gap-2">
-                <Text className="font-bold text-4xl text-foreground">
+                <Text className="font-bold text-4xl text-gray-900 dark:text-white">
                   {balanceMutation.data?.value !== undefined
                     ? (
                         Number(balanceMutation.data.value) / 1_000_000_000
@@ -135,7 +137,9 @@ export default function SolanaScreen() {
                       })
                     : '0.000000000'}
                 </Text>
-                <Text className="font-semibold text-muted text-xl">SOL</Text>
+                <Text className="font-semibold text-gray-500 text-xl dark:text-[#8A8A93]">
+                  SOL
+                </Text>
               </View>
             </View>
           )}

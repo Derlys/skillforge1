@@ -28,7 +28,7 @@ export function SolanaConnect() {
         <Card.Body>
           <View className="gap-1">
             <Card.Title>Solana Wallet</Card.Title>
-            <Text className="text-muted text-xs">
+            <Text className="text-gray-500 text-xs dark:text-[#8A8A93]">
               Only available on Android
             </Text>
           </View>
@@ -43,7 +43,10 @@ export function SolanaConnect() {
         {account ? (
           <View className="gap-1">
             <Card.Title>{account.label}</Card.Title>
-            <Text className="text-muted text-xs" numberOfLines={1}>
+            <Text
+              className="text-gray-500 text-xs dark:text-[#8A8A93]"
+              numberOfLines={1}
+            >
               {ellipsify(account.address)}
             </Text>
           </View>

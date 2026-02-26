@@ -25,7 +25,9 @@ function StackLayout() {
   )
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: dynamic require() from optional wallet package has no types
 let MobileWalletProvider: React.ComponentType<any> | null = null
+// biome-ignore lint/suspicious/noExplicitAny: dynamic require() from optional wallet package has no types
 let cluster: any = null
 
 if (Platform.OS === 'android') {

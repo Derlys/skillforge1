@@ -26,7 +26,7 @@ export default function Home() {
   const isLoading = healthCheck?.isLoading
 
   return (
-    <Container className="bg-white">
+    <Container className="bg-background">
       <View className="space-y-6 p-6">
         <View className="mb-6 py-4">
           <Text className="mb-2 font-bold text-4xl text-foreground">
@@ -54,9 +54,11 @@ export default function Home() {
           </Pressable>
         </View>
 
-        <View className="rounded-lg border border-gray-200 p-4">
+        <View className="rounded-lg border border-border/10 p-4">
           <View className="mb-4 flex-row items-center justify-between">
-            <Text className="font-semibold text-black">Estado del Sistema</Text>
+            <Text className="font-semibold text-foreground">
+              Estado del Sistema
+            </Text>
             <Chip color={isConnected ? 'success' : 'danger'} size="sm">
               <Chip.Label>{isConnected ? 'EN LÍNEA' : 'OFFLINE'}</Chip.Label>
             </Chip>
@@ -94,8 +96,10 @@ export default function Home() {
           </View>
         </View>
 
-        <View className="my-6 rounded-lg border border-gray-200 p-4">
-          <Text className="mb-2 font-semibold text-black">Datos Privados</Text>
+        <View className="my-6 rounded-lg border border-border/10 p-4">
+          <Text className="mb-2 font-semibold text-foreground">
+            Datos Privados
+          </Text>
           <Text className="text-muted">
             {privateData.data?.message || 'No has iniciado sesión'}
           </Text>
