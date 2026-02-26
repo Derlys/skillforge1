@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import { Button } from 'heroui-native'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {
   Platform,
   Pressable,
@@ -32,7 +32,7 @@ if (Platform.OS === 'android') {
 
 export function LandingScreen() {
   const [view, setView] = useState<'landing' | 'sign-in' | 'sign-up'>('landing')
-  const { account, connect } = useWallet()
+  const { connect } = useWallet()
   const { t } = useI18n()
 
   if (view === 'sign-in') {
@@ -44,7 +44,9 @@ export function LandingScreen() {
           onPress={() => setView('landing')}
           className="mt-4"
         >
-          <Text className="text-white/60">{t('landing.back')}</Text>
+          <Text className="text-gray-900 dark:text-white/60">
+            {t('landing.back')}
+          </Text>
         </Button>
       </View>
     )
@@ -59,7 +61,9 @@ export function LandingScreen() {
           onPress={() => setView('landing')}
           className="mt-4"
         >
-          <Text className="text-white/60">{t('landing.back')}</Text>
+          <Text className="text-gray-900 dark:text-white/60">
+            {t('landing.back')}
+          </Text>
         </Button>
       </View>
     )
@@ -72,10 +76,10 @@ export function LandingScreen() {
       {/* Top Header with Skip */}
       <View className="flex-row justify-end px-6 pt-4">
         <Pressable
-          className="rounded-full border border-white/5 bg-white/5 px-4 py-2 active:bg-white/10"
+          className="rounded-full border border-black/5 bg-black/5 px-4 py-2 active:bg-white/10 dark:border-white/5 dark:bg-white/5"
           onPress={() => router.replace('/(drawer)/(tabs)')}
         >
-          <Text className="font-medium text-white/80 text-xs uppercase tracking-wider">
+          <Text className="font-medium text-gray-900/80 text-xs uppercase tracking-wider dark:text-white/80">
             {t('landing.skip')}
           </Text>
         </Pressable>
@@ -86,14 +90,14 @@ export function LandingScreen() {
         <View className="mt-20 items-center">
           <View className="mb-12 h-0.5 w-12 rounded-full bg-[#3D3E47]" />
 
-          <Text className="mb-2 font-bold text-5xl text-white">
+          <Text className="mb-2 font-bold text-5xl text-gray-900 dark:text-white">
             {t('landing.title')}
           </Text>
-          <Text className="mb-12 font-medium text-lg text-white/80">
+          <Text className="mb-12 font-medium text-gray-900/80 text-lg dark:text-white/80">
             {t('landing.subtitle')}
           </Text>
 
-          <Text className="px-8 text-center text-sm text-white/40">
+          <Text className="px-8 text-center text-gray-900/40 text-sm dark:text-white/40">
             {t('landing.description')}
           </Text>
         </View>
@@ -112,16 +116,18 @@ export function LandingScreen() {
 
           <View className="flex-row items-center gap-4 py-2">
             <View className="h-[1px] flex-1 bg-white/10" />
-            <Text className="text-white/40 text-xs">{t('landing.or')}</Text>
+            <Text className="text-gray-900/40 text-xs dark:text-white/40">
+              {t('landing.or')}
+            </Text>
             <View className="h-[1px] flex-1 bg-white/10" />
           </View>
 
           <Button
             onPress={() => setView('sign-in')}
-            className="h-14 flex-row items-center justify-center gap-2 rounded-2xl border border-white/5 bg-[#1A1B23]"
+            className="h-14 flex-row items-center justify-center gap-2 rounded-2xl border border-black/5 bg-[#1A1B23] dark:border-white/5"
           >
             <Ionicons name="mail-outline" size={20} color="white" />
-            <Text className="font-semibold text-lg text-white">
+            <Text className="font-semibold text-gray-900 text-lg dark:text-white">
               {t('landing.continueEmail')}
             </Text>
           </Button>
@@ -130,7 +136,7 @@ export function LandingScreen() {
         {/* Footer */}
         <View className="flex-row items-center gap-2 opacity-40">
           <Ionicons name="lock-closed-outline" size={12} color="white" />
-          <Text className="font-semibold text-[10px] text-white uppercase tracking-[2px]">
+          <Text className="font-semibold text-[10px] text-gray-900 uppercase tracking-[2px] dark:text-white">
             {t('landing.poweredBy')}
           </Text>
         </View>

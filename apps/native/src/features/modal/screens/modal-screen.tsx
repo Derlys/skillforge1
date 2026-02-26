@@ -24,10 +24,10 @@ function Modal() {
                 color={accentForegroundColor}
               />
             </View>
-            <Text className="mb-1 font-medium text-foreground text-lg">
+            <Text className="mb-1 font-medium text-gray-900 text-lg dark:text-white">
               Modal Screen
             </Text>
-            <Text className="mb-4 text-center text-muted text-sm">
+            <Text className="mb-4 text-center text-gray-500 text-sm dark:text-[#8A8A93]">
               This is an example modal screen for dialogs and confirmations.
             </Text>
           </View>

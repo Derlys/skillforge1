@@ -1,13 +1,6 @@
-import {
-  Button,
-  FieldError,
-  Input,
-  Label,
-  Spinner,
-  TextField,
-} from 'heroui-native'
+import { Button, Input, Label, Spinner, TextField } from 'heroui-native'
 import { useState } from 'react'
-import { Image, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { queryClient } from '@/src/shared/api/orpc'
 import { authClient } from '@/src/shared/auth/auth-client'
 
@@ -59,10 +52,10 @@ export function SignIn({ onSignUpPress }: SignInFormProps) {
     <View className="w-full gap-8">
       {/* Title */}
       <View>
-        <Text className="mb-2 font-bold text-3xl text-white">
+        <Text className="mb-2 font-bold text-3xl text-gray-900 dark:text-white">
           {t('auth.signIn.title')}
         </Text>
-        <Text className="text-base text-white/60">
+        <Text className="text-base text-gray-900 dark:text-white/60">
           {t('auth.signIn.subtitle')}
         </Text>
       </View>
@@ -79,7 +72,7 @@ export function SignIn({ onSignUpPress }: SignInFormProps) {
       {/* Form Fields */}
       <View className="gap-5">
         <TextField>
-          <Label className="mb-1 ml-1 font-medium text-sm text-white/80">
+          <Label className="mb-1 ml-1 font-medium text-gray-900/80 text-sm dark:text-white/80">
             {t('auth.signIn.email')}
           </Label>
           <Input
@@ -89,12 +82,12 @@ export function SignIn({ onSignUpPress }: SignInFormProps) {
             placeholderTextColor="rgba(255,255,255,0.3)"
             keyboardType="email-address"
             autoCapitalize="none"
-            className="h-14 rounded-2xl border-white/5 bg-[#1A1B23] px-4 text-white"
+            className="h-14 rounded-2xl border-black/5 bg-[#1A1B23] px-4 text-gray-900 dark:border-white/5 dark:text-white"
           />
         </TextField>
 
         <TextField>
-          <Label className="mb-1 ml-1 font-medium text-sm text-white/80">
+          <Label className="mb-1 ml-1 font-medium text-gray-900/80 text-sm dark:text-white/80">
             {t('auth.signIn.password')}
           </Label>
           <Input
@@ -103,7 +96,7 @@ export function SignIn({ onSignUpPress }: SignInFormProps) {
             placeholder="••••••••"
             placeholderTextColor="rgba(255,255,255,0.3)"
             secureTextEntry
-            className="h-14 rounded-2xl border-white/5 bg-[#1A1B23] px-4 text-white"
+            className="h-14 rounded-2xl border-black/5 bg-[#1A1B23] px-4 text-gray-900 dark:border-white/5 dark:text-white"
           />
         </TextField>
 
@@ -125,8 +118,13 @@ export function SignIn({ onSignUpPress }: SignInFormProps) {
 
       {/* Sign Up Link */}
       <View className="flex-row items-center justify-center gap-2 pt-2">
-        <Text className="text-white/40">{t('auth.signIn.noAccount')}</Text>
-        <Text className="font-bold text-white" onPress={onSignUpPress}>
+        <Text className="text-gray-900/40 dark:text-white/40">
+          {t('auth.signIn.noAccount')}
+        </Text>
+        <Text
+          className="font-bold text-gray-900 dark:text-white"
+          onPress={onSignUpPress}
+        >
           {t('auth.signIn.signUp')}
         </Text>
       </View>

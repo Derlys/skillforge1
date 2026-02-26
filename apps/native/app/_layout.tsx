@@ -6,6 +6,7 @@ import { HeroUINativeProvider } from 'heroui-native'
 import { Platform } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { AppThemeProvider } from '@/src/core/providers/app-theme-provider'
 import { queryClient } from '@/src/shared/api/orpc'
@@ -31,7 +32,9 @@ function StackLayout() {
   )
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: dynamic require() from optional wallet package has no types
 let MobileWalletProvider: React.ComponentType<any> | null = null
+// biome-ignore lint/suspicious/noExplicitAny: dynamic require() from optional wallet package has no types
 let cluster: any = null
 
 if (Platform.OS === 'android') {
@@ -66,13 +69,15 @@ export default function Layout() {
     <QueryClientProvider client={queryClient}>
       <WalletProvider>
         <GestureHandlerRootView style={{ flex: 1 }}>
-          <KeyboardProvider>
-            <AppThemeProvider>
-              <HeroUINativeProvider>
-                <StackLayout />
-              </HeroUINativeProvider>
-            </AppThemeProvider>
-          </KeyboardProvider>
+          <SafeAreaProvider>
+            <KeyboardProvider>
+              <AppThemeProvider>
+                <HeroUINativeProvider>
+                  <StackLayout />
+                </HeroUINativeProvider>
+              </AppThemeProvider>
+            </KeyboardProvider>
+          </SafeAreaProvider>
         </GestureHandlerRootView>
       </WalletProvider>
     </QueryClientProvider>

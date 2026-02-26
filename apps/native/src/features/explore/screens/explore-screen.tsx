@@ -1,15 +1,16 @@
 import { Ionicons } from '@expo/vector-icons'
 import { router } from 'expo-router'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {
   Pressable,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   Text,
   TextInput,
   View,
 } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useAppTheme } from '@/src/core/providers/app-theme-provider'
 
 const CATEGORIES = ['Development', 'Design', 'Strategy', 'Marketing', 'Legal']
 
@@ -42,27 +43,37 @@ const EXPERTS = [
 
 export function ExploreScreen() {
   const [activeCategory, setActiveCategory] = useState('Development')
+  const insets = useSafeAreaInsets()
+  const { isDark } = useAppTheme()
 
   return (
-    <SafeAreaView className="flex-1 bg-[#0B0C14]">
-      <StatusBar barStyle="light-content" />
+    <View className="flex-1 bg-background" style={{ paddingTop: insets.top }}>
+      <StatusBar
+        barStyle={isDark ? 'light-content' : 'dark-content'}
+        translucent
+      />
 
       {/* Header */}
       <View className="px-6 pt-6 pb-4">
-        <Text className="mb-1 font-bold text-[#FFD700] text-sm tracking-wide">
-          SkillForge
+        <Text className="font-bold text-3xl text-gray-900 dark:text-white">
+          Experts
         </Text>
-        <Text className="font-bold text-3xl text-white">Experts</Text>
       </View>
 
       {/* Search Bar */}
       <View className="mb-6 px-6">
-        <View className="flex-row items-center rounded-2xl border border-white/5 bg-[#1C1D29] px-4 py-3.5">
-          <Ionicons name="search" size={20} color="rgba(255,255,255,0.4)" />
+        <View className="flex-row items-center rounded-2xl border border-border/10 bg-card px-4 py-3.5">
+          <Ionicons
+            name="search"
+            size={20}
+            color={isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.4)'}
+          />
           <TextInput
             placeholder="Search experts..."
-            placeholderTextColor="rgba(255,255,255,0.4)"
-            className="ml-3 flex-1 text-base text-white"
+            placeholderTextColor={
+              isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.4)'
+            }
+            className="ml-3 flex-1 text-base text-foreground"
           />
         </View>
       </View>
@@ -82,13 +93,13 @@ export function ExploreScreen() {
                 onPress={() => setActiveCategory(category)}
                 className={`rounded-full border px-5 py-2 ${
                   isActive
-                    ? 'border-[#FFD700]/20 bg-[#FFD700]/10'
-                    : 'border-white/5 bg-[#1C1D29]'
+                    ? 'border-primary/20 bg-primary/10'
+                    : 'border-border/5 bg-card'
                 }`}
               >
                 <Text
                   className={`font-medium text-sm ${
-                    isActive ? 'text-[#FFD700]' : 'text-white/60'
+                    isActive ? 'text-primary' : 'text-muted'
                   }`}
                 >
                   {category}
@@ -112,7 +123,7 @@ export function ExploreScreen() {
           <Pressable
             key={expert.id}
             onPress={() => router.push(`/user/${expert.id}`)}
-            className="flex-row items-center rounded-3xl border border-white/5 bg-[#1C1D29] p-5 active:bg-[#252631]"
+            className="flex-row items-center rounded-3xl border border-border/5 bg-card p-5 active:bg-surface"
           >
             {/* Avatar */}
             <View
@@ -126,11 +137,11 @@ export function ExploreScreen() {
 
             {/* Info */}
             <View className="flex-1 justify-center">
-              <Text className="mb-0.5 font-bold text-lg text-white">
+              <Text className="mb-0.5 font-bold text-foreground text-lg">
                 {expert.name}
               </Text>
-              <Text className="mb-1 text-sm text-white/40">{expert.role}</Text>
-              <Text className="font-semibold text-[#FFD700] text-xs">
+              <Text className="mb-1 text-muted text-sm">{expert.role}</Text>
+              <Text className="font-semibold text-primary text-xs">
                 {expert.rate}
               </Text>
             </View>
@@ -139,11 +150,11 @@ export function ExploreScreen() {
             <Ionicons
               name="chevron-forward"
               size={20}
-              color="rgba(255,255,255,0.2)"
+              color={isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)'}
             />
           </Pressable>
         ))}
       </ScrollView>
-    </SafeAreaView>
+    </View>
   )
 }

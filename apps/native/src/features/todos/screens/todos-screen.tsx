@@ -75,7 +75,7 @@ export default function TodosScreen() {
       <ScrollView className="flex-1" contentContainerClassName="p-4">
         <View className="mb-4 py-4">
           <View className="flex-row items-center justify-between">
-            <Text className="font-semibold text-2xl text-foreground tracking-tight">
+            <Text className="font-semibold text-2xl text-gray-900 tracking-tight dark:text-white">
               Tasks
             </Text>
             {totalCount > 0 && (
@@ -133,7 +133,9 @@ export default function TodosScreen() {
         {isLoading && (
           <View className="items-center justify-center py-12">
             <Spinner size="lg" />
-            <Text className="mt-3 text-muted text-sm">Loading tasks...</Text>
+            <Text className="mt-3 text-gray-500 text-sm dark:text-[#8A8A93]">
+              Loading tasks...
+            </Text>
           </View>
         )}
 
@@ -143,10 +145,10 @@ export default function TodosScreen() {
             className="items-center justify-center rounded-lg py-10"
           >
             <Ionicons name="checkbox-outline" size={40} color={mutedColor} />
-            <Text className="mt-3 font-medium text-foreground">
+            <Text className="mt-3 font-medium text-gray-900 dark:text-white">
               No tasks yet
             </Text>
-            <Text className="mt-1 text-muted text-xs">
+            <Text className="mt-1 text-gray-500 text-xs dark:text-[#8A8A93]">
               Add your first task to get started
             </Text>
           </Surface>
@@ -169,7 +171,7 @@ export default function TodosScreen() {
                   />
                   <View className="flex-1">
                     <Text
-                      className={`text-sm ${todo.completed ? 'text-muted line-through' : 'text-foreground'}`}
+                      className={`text-sm ${todo.completed ? 'text-gray-500 line-through dark:text-[#8A8A93]' : 'text-gray-900 dark:text-white'}`}
                     >
                       {todo.text}
                     </Text>

@@ -10,6 +10,22 @@
     "back": "Volver",
     "skip": "Saltar"
   },
+  "schedule": {
+    "confirmTitle": "Reservar",
+    "service": "Servicio",
+    "date": "Fecha",
+    "time": "Hora",
+    "totalPrice": "Precio total",
+    "cancel": "Cancelar",
+    "confirm": "Reservar",
+    "transactionNote": "La transacción se procesará en la red Solana. Asegúrate de que tu billetera esté conectada y tenga fondos suficientes."
+  },
+  "tabs": {
+    "home": "Inicio",
+    "search": "Buscar",
+    "schedule": "Sesiones",
+    "profile": "Perfil"
+  },
   "auth": {
     "signIn": {
       "title": "Iniciar sesión",
@@ -50,5 +66,20 @@
         "description": "Comparte tu experiencia, guía a otros y gana SOL por tu tiempo."
       }
     }
+  },
+  "profile": {
+    "myProfile": "Mi Perfil",
+    "sessions": "Sesiones",
+    "balance": "Balance",
+    "reviews": "Reseñas",
+    "aboutMe": "Sobre mí",
+    "learningInterests": "Temas de interés",
+    "preferences": "Preferencias",
+    "language": "Idioma",
+    "theme": "Tema",
+    "account": "Cuenta",
+    "editProfile": "Editar Perfil",
+    "paymentMethods": "Métodos de Pago",
+    "signOut": "Cerrar Sesión"
   }
 }

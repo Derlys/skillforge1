@@ -10,6 +10,22 @@
     "back": "Back",
     "skip": "Skip"
   },
+  "schedule": {
+    "confirmTitle": "Book",
+    "service": "Service",
+    "date": "Date",
+    "time": "Time",
+    "totalPrice": "Total Price",
+    "cancel": "Cancel",
+    "confirm": "Book",
+    "transactionNote": "Transaction will be processed on the Solana network. Please ensure your wallet is connected and has sufficient funds."
+  },
+  "tabs": {
+    "home": "Home",
+    "search": "Search",
+    "schedule": "Schedule",
+    "profile": "Profile"
+  },
   "auth": {
     "signIn": {
       "title": "Sign In",
@@ -50,5 +66,20 @@
         "description": "Share your expertise, mentor others, and earn SOL for your time."
       }
     }
+  },
+  "profile": {
+    "myProfile": "My Profile",
+    "sessions": "Sessions",
+    "balance": "Balance",
+    "reviews": "Reviews",
+    "aboutMe": "About me",
+    "learningInterests": "Learning Interests",
+    "preferences": "Preferences",
+    "language": "Language",
+    "theme": "Theme",
+    "account": "Account",
+    "editProfile": "Edit Profile",
+    "paymentMethods": "Payment Methods",
+    "signOut": "Sign Out"
   }
 }

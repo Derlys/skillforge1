@@ -2,4 +2,26 @@
 @import "uniwind";
 @import "heroui-native/styles";
 
+@theme {
+  --color-primary: #ffd700;
+  --color-icon-accent: #8a8a93;
+  --color-background: #0f101a;
+  --color-foreground: #ffffff;
+  --color-muted: #8a8a93;
+  --color-card: #161721;
+  --color-surface: #252836;
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background: #f3f4f6;
+    --color-foreground: #111827;
+    --color-muted: #6b7280;
+    --color-card: #ffffff;
+    --color-surface: #e5e7eb;
+    --color-border: rgba(0, 0, 0, 0.1);
+  }
+}
+
 @source "./node_modules/heroui-native/lib";
