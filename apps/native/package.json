@@ -8,6 +8,7 @@
     "check-types": "tsc -p tsconfig.json --noEmit",
     "dev": "expo start --clear",
     "ios": "expo run:ios",
+    "postinstall": "node replace-colors-dark.js",
     "prebuild": "expo prebuild",
     "start": "expo start",
     "web": "expo start --web"

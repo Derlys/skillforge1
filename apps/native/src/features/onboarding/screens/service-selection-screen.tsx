@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import { Pressable, SafeAreaView, StatusBar, Text, View } from 'react-native'
-
+import { useAppTheme } from '@/src/core/providers/app-theme-provider'
 import { useI18n } from '@/src/shared/i18n/use-i18n'
 
 interface SelectionCardProps {
@@ -10,6 +10,7 @@ interface SelectionCardProps {
   icon: keyof typeof Ionicons.glyphMap
   iconColor: string
   onPress: () => void
+  isDark: boolean
 }
 
 function SelectionCard({
@@ -18,21 +19,30 @@ function SelectionCard({
   icon,
   iconColor,
   onPress,
+  isDark,
 }: SelectionCardProps) {
+  const cardBg = isDark ? '#161721' : '#FFFFFF'
+  const textColor = isDark ? '#FFFFFF' : '#111827'
+  const textSecondary = isDark ? 'rgba(255,255,255,0.4)' : 'rgba(17,24,39,0.4)'
+
   return (
     <Pressable
       onPress={onPress}
-      className="w-full flex-row items-center gap-6 rounded-3xl border border-black/5 bg-white p-6 active:bg-[#1C1D29] dark:border-white/5 dark:bg-[#161721]"
+      className="w-full flex-row items-center gap-6 rounded-3xl border border-black/5 p-6 active:bg-[#1C1D29]"
+      style={{
+        backgroundColor: cardBg,
+        borderColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
+      }}
     >
       <View className="h-14 w-14 items-center justify-center rounded-2xl bg-[#252631]">
         <Ionicons name={icon} size={28} color={iconColor} />
       </View>
 
       <View className="flex-1 gap-1">
-        <Text className="font-bold text-gray-900 text-xl dark:text-white">
+        <Text className="font-bold text-xl" style={{ color: textColor }}>
           {title}
         </Text>
-        <Text className="text-gray-900/40 text-sm leading-5 dark:text-white/40">
+        <Text className="text-sm leading-5" style={{ color: textSecondary }}>
           {description}
         </Text>
       </View>
@@ -40,7 +50,7 @@ function SelectionCard({
       <Ionicons
         name="chevron-forward"
         size={20}
-        color="rgba(255,255,255,0.2)"
+        color={isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)'}
       />
     </Pressable>
   )
@@ -48,6 +58,7 @@ function SelectionCard({
 
 export function ServiceSelectionScreen({ onBack }: { onBack?: () => void }) {
   const { t } = useI18n()
+  const { isDark } = useAppTheme()
 
   const handleBack = () => {
     if (onBack) {
@@ -58,15 +69,17 @@ export function ServiceSelectionScreen({ onBack }: { onBack?: () => void }) {
   }
 
   const handleRoleSelect = (role: 'expert' | 'mentor') => {
-    // TODO: persist role selection (e.g. to AsyncStorage or auth state)
     console.log(`Role selected: ${role}`)
-    // Navigate into the main tabs (already here, but go to search or stay)
     router.replace('/(drawer)/(tabs)/search')
   }
 
+  const bgColor = isDark ? '#0B0C14' : '#F3F4F6'
+  const textColor = isDark ? '#FFFFFF' : '#111827'
+  const textSecondary = isDark ? 'rgba(255,255,255,0.6)' : '#6B7280'
+
   return (
-    <SafeAreaView className="flex-1 bg-[#0B0C14]">
-      <StatusBar barStyle="light-content" />
+    <SafeAreaView className="flex-1" style={{ backgroundColor: bgColor }}>
+      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
 
       {/* Back button */}
       <View className="flex-row px-6 pt-4">
@@ -81,10 +94,13 @@ export function ServiceSelectionScreen({ onBack }: { onBack?: () => void }) {
       <View className="flex-1 px-6 pt-8">
         {/* Header */}
         <View className="mb-12 items-center">
-          <Text className="mb-3 font-bold text-3xl text-gray-900 dark:text-white">
+          <Text
+            className="mb-3 font-bold text-3xl"
+            style={{ color: textColor }}
+          >
             {t('auth.onboarding.title')}
           </Text>
-          <Text className="text-gray-900 text-lg dark:text-white/60">
+          <Text className="text-lg" style={{ color: textSecondary }}>
             {t('auth.onboarding.subtitle')}
           </Text>
         </View>
@@ -97,6 +113,7 @@ export function ServiceSelectionScreen({ onBack }: { onBack?: () => void }) {
             icon="search-outline"
             iconColor="#FFD700"
             onPress={() => handleRoleSelect('expert')}
+            isDark={isDark}
           />
 
           <SelectionCard
@@ -105,12 +122,18 @@ export function ServiceSelectionScreen({ onBack }: { onBack?: () => void }) {
             icon="ribbon-outline"
             iconColor="#FFD700"
             onPress={() => handleRoleSelect('mentor')}
+            isDark={isDark}
           />
         </View>
 
         {/* Footer info */}
         <View className="flex-1 justify-end pb-12">
-          <Text className="px-12 text-center text-gray-900 text-xs leading-5 dark:text-white/30">
+          <Text
+            className="px-12 text-center text-xs leading-5"
+            style={{
+              color: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(17,24,39,0.5)',
+            }}
+          >
             {t('auth.onboarding.footer')}
           </Text>
         </View>
