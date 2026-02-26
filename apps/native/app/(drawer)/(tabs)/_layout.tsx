@@ -2,17 +2,24 @@ import { Ionicons } from '@expo/vector-icons'
 import { Tabs } from 'expo-router'
 import { Pressable, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useAppTheme } from '@/src/core/providers/app-theme-provider'
 import { useI18n } from '../../../src/shared/i18n/use-i18n'
 
 // biome-ignore lint/suspicious/noExplicitAny: expo-router tabBar prop requires compatible shape
 function CustomTabBar({ state, descriptors, navigation }: any) {
   const insets = useSafeAreaInsets()
   const { t } = useI18n()
+  const { isDark } = useAppTheme()
+
+  const inactiveColor = isDark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.5)'
+  const activeColor = '#FFD700'
+  const tabBg = isDark ? '#161721' : '#f3f4f6'
 
   return (
     <View
-      className="flex-row items-center justify-around border-black/5 border-t bg-white px-4 dark:border-white/5 dark:bg-[#161721]"
+      className="flex-row items-center justify-around border-black/5 border-t px-4"
       style={{
+        backgroundColor: tabBg,
         paddingBottom: Math.max(insets.bottom, 24),
         paddingTop: 16,
       }}
@@ -71,12 +78,12 @@ function CustomTabBar({ state, descriptors, navigation }: any) {
                 <Ionicons
                   name={iconName}
                   size={22}
-                  color={isFocused ? '#FFD700' : 'rgba(255,255,255,0.35)'}
+                  color={isFocused ? activeColor : inactiveColor}
                 />
               </View>
               <Text
                 style={{
-                  color: isFocused ? '#FFD700' : 'rgba(255,255,255,0.35)',
+                  color: isFocused ? activeColor : inactiveColor,
                   fontSize: 10,
                   fontWeight: '500',
                 }}

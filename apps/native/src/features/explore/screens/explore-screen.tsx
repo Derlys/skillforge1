@@ -47,7 +47,10 @@ export function ExploreScreen() {
   const { isDark } = useAppTheme()
 
   return (
-    <View className="flex-1 bg-background" style={{ paddingTop: insets.top }}>
+    <View
+      className="flex-1 bg-[#F3F4F6] dark:bg-[#0F101A]"
+      style={{ paddingTop: insets.top }}
+    >
       <StatusBar
         barStyle={isDark ? 'light-content' : 'dark-content'}
         translucent
@@ -62,7 +65,7 @@ export function ExploreScreen() {
 
       {/* Search Bar */}
       <View className="mb-6 px-6">
-        <View className="flex-row items-center rounded-2xl border border-border/10 bg-card px-4 py-3.5">
+        <View className="flex-row items-center rounded-2xl border border-black/10 bg-white px-4 py-3.5 dark:border-white/10 dark:bg-[#161721]">
           <Ionicons
             name="search"
             size={20}
@@ -73,7 +76,7 @@ export function ExploreScreen() {
             placeholderTextColor={
               isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.4)'
             }
-            className="ml-3 flex-1 text-base text-foreground"
+            className="ml-3 flex-1 text-base text-gray-900 dark:text-white"
           />
         </View>
       </View>
@@ -94,12 +97,14 @@ export function ExploreScreen() {
                 className={`rounded-full border px-5 py-2 ${
                   isActive
                     ? 'border-primary/20 bg-primary/10'
-                    : 'border-border/5 bg-card'
+                    : 'border-black/5 bg-white dark:border-white/5 dark:bg-[#161721]'
                 }`}
               >
                 <Text
                   className={`font-medium text-sm ${
-                    isActive ? 'text-primary' : 'text-muted'
+                    isActive
+                      ? 'text-primary'
+                      : 'text-gray-500 dark:text-[#8A8A93]'
                   }`}
                 >
                   {category}
@@ -123,7 +128,7 @@ export function ExploreScreen() {
           <Pressable
             key={expert.id}
             onPress={() => router.push(`/user/${expert.id}`)}
-            className="flex-row items-center rounded-3xl border border-border/5 bg-card p-5 active:bg-surface"
+            className="flex-row items-center rounded-3xl border border-black/5 bg-white p-5 active:bg-gray-100 dark:border-white/5 dark:bg-[#161721] dark:bg-[#252836]"
           >
             {/* Avatar */}
             <View
@@ -137,10 +142,12 @@ export function ExploreScreen() {
 
             {/* Info */}
             <View className="flex-1 justify-center">
-              <Text className="mb-0.5 font-bold text-foreground text-lg">
+              <Text className="mb-0.5 font-bold text-gray-900 text-lg dark:text-white">
                 {expert.name}
               </Text>
-              <Text className="mb-1 text-muted text-sm">{expert.role}</Text>
+              <Text className="mb-1 text-gray-500 text-sm dark:text-[#8A8A93]">
+                {expert.role}
+              </Text>
               <Text className="font-semibold text-primary text-xs">
                 {expert.rate}
               </Text>

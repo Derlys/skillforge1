@@ -4,9 +4,13 @@ import { Drawer } from 'expo-router/drawer'
 import { useThemeColor } from 'heroui-native'
 import { useCallback } from 'react'
 import { Pressable, Text } from 'react-native'
+import { withUniwind } from 'uniwind'
 
 import { authClient } from '@/src/shared/auth/auth-client'
 import { ThemeToggle } from '@/src/shared/ui/theme-toggle'
+
+const StyledIonicons = withUniwind(Ionicons)
+const StyledMaterialIcons = withUniwind(MaterialIcons)
 
 export default function DrawerLayout() {
   const { data: session } = authClient.useSession()
@@ -39,11 +43,13 @@ export default function DrawerLayout() {
               Home
             </Text>
           ),
-          drawerIcon: ({ size, color, focused }) => (
-            <Ionicons
+          drawerIcon: ({ size, focused }) => (
+            <StyledIonicons
               name="home-outline"
               size={size}
-              color={focused ? color : themeColorForeground}
+              className={
+                focused ? 'text-primary' : 'text-gray-900 dark:text-white'
+              }
             />
           ),
         }}
@@ -57,20 +63,22 @@ export default function DrawerLayout() {
               Tabs
             </Text>
           ),
-          drawerIcon: ({ size, color, focused }) => (
-            <MaterialIcons
+          drawerIcon: ({ size, focused }) => (
+            <StyledMaterialIcons
               name="border-bottom"
               size={size}
-              color={focused ? color : themeColorForeground}
+              className={
+                focused ? 'text-primary' : 'text-gray-900 dark:text-white'
+              }
             />
           ),
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable className="mr-4">
-                <Ionicons
+                <StyledIonicons
                   name="add-outline"
                   size={24}
-                  color={themeColorForeground}
+                  className="text-gray-900 dark:text-white"
                 />
               </Pressable>
             </Link>
@@ -86,11 +94,13 @@ export default function DrawerLayout() {
               Todos
             </Text>
           ),
-          drawerIcon: ({ size, color, focused }) => (
-            <Ionicons
+          drawerIcon: ({ size, focused }) => (
+            <StyledIonicons
               name="checkbox-outline"
               size={size}
-              color={focused ? color : themeColorForeground}
+              className={
+                focused ? 'text-primary' : 'text-gray-900 dark:text-white'
+              }
             />
           ),
         }}
@@ -104,11 +114,13 @@ export default function DrawerLayout() {
               AI
             </Text>
           ),
-          drawerIcon: ({ size, color, focused }) => (
-            <Ionicons
+          drawerIcon: ({ size, focused }) => (
+            <StyledIonicons
               name="chatbubble-ellipses-outline"
               size={size}
-              color={focused ? color : themeColorForeground}
+              className={
+                focused ? 'text-primary' : 'text-gray-900 dark:text-white'
+              }
             />
           ),
         }}
@@ -122,11 +134,13 @@ export default function DrawerLayout() {
               Solana
             </Text>
           ),
-          drawerIcon: ({ size, color, focused }) => (
-            <Ionicons
+          drawerIcon: ({ size, focused }) => (
+            <StyledIonicons
               name="wallet-outline"
               size={size}
-              color={focused ? color : themeColorForeground}
+              className={
+                focused ? 'text-primary' : 'text-gray-900 dark:text-white'
+              }
             />
           ),
         }}

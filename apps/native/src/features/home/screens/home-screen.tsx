@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { useQuery } from '@tanstack/react-query'
 import { Chip, useThemeColor } from 'heroui-native'
 import { Pressable, Text, View } from 'react-native'
-
+import { useAppTheme } from '@/src/core/providers/app-theme-provider'
 import { ServiceSelectionScreen } from '@/src/features/onboarding/screens/service-selection-screen'
 import { SolanaConnect } from '@/src/features/solana/components/solana-connect-card'
 import { orpc, queryClient } from '@/src/shared/api/orpc'
@@ -13,10 +13,14 @@ export default function Home() {
   const healthCheck = useQuery(orpc.healthCheck.queryOptions())
   const privateData = useQuery(orpc.privateData.queryOptions())
   const { data: session } = authClient.useSession()
+  const { isDark } = useAppTheme()
 
   const mutedColor = useThemeColor('muted')
   const successColor = useThemeColor('success')
   const dangerColor = useThemeColor('danger')
+
+  const textColor = isDark ? '#FFFFFF' : '#111827'
+  const textSecondary = isDark ? '#8A8A93' : '#6B7280'
 
   if (!session?.user) {
     return <ServiceSelectionScreen />
@@ -26,10 +30,13 @@ export default function Home() {
   const isLoading = healthCheck?.isLoading
 
   return (
-    <Container className="bg-background">
+    <Container>
       <View className="space-y-6 p-6">
         <View className="mb-6 py-4">
-          <Text className="mb-2 font-bold text-4xl text-foreground">
+          <Text
+            className="mb-2 font-bold text-4xl"
+            style={{ color: textColor }}
+          >
             solana-mobile-stack
           </Text>
         </View>
@@ -39,10 +46,12 @@ export default function Home() {
         </View>
 
         <View className="mb-6 rounded-lg bg-success/10 p-4">
-          <Text className="mb-2 text-base text-foreground">
+          <Text className="mb-2 text-base" style={{ color: textColor }}>
             Bienvenido, <Text className="font-medium">{session.user.name}</Text>
           </Text>
-          <Text className="mb-4 text-muted text-sm">{session.user.email}</Text>
+          <Text className="mb-4 text-sm" style={{ color: textSecondary }}>
+            {session.user.email}
+          </Text>
           <Pressable
             className="self-start rounded-lg bg-danger px-4 py-3 active:opacity-70"
             onPress={() => {
@@ -50,13 +59,15 @@ export default function Home() {
               queryClient.invalidateQueries()
             }}
           >
-            <Text className="font-medium text-foreground">Cerrar sesión</Text>
+            <Text className="font-medium" style={{ color: textColor }}>
+              Cerrar sesión
+            </Text>
           </Pressable>
         </View>
 
-        <View className="rounded-lg border border-border/10 p-4">
+        <View className="rounded-lg border border-black/10 p-4 dark:border-white/10">
           <View className="mb-4 flex-row items-center justify-between">
-            <Text className="font-semibold text-foreground">
+            <Text className="font-semibold" style={{ color: textColor }}>
               Estado del Sistema
             </Text>
             <Chip color={isConnected ? 'success' : 'danger'} size="sm">
@@ -69,10 +80,10 @@ export default function Home() {
               className={`mr-3 h-3 w-3 rounded-full ${isConnected ? 'bg-success' : 'bg-muted'}`}
             />
             <View className="flex-1">
-              <Text className="mb-1 font-medium text-foreground">
+              <Text className="mb-1 font-medium" style={{ color: textColor }}>
                 ORPC Backend
               </Text>
-              <Text className="text-muted text-sm">
+              <Text className="text-sm" style={{ color: textSecondary }}>
                 {isLoading
                   ? 'Verificando conexión...'
                   : isConnected
@@ -96,11 +107,11 @@ export default function Home() {
           </View>
         </View>
 
-        <View className="my-6 rounded-lg border border-border/10 p-4">
-          <Text className="mb-2 font-semibold text-foreground">
+        <View className="my-6 rounded-lg border border-black/10 p-4 dark:border-white/10">
+          <Text className="mb-2 font-semibold" style={{ color: textColor }}>
             Datos Privados
           </Text>
-          <Text className="text-muted">
+          <Text style={{ color: textSecondary }}>
             {privateData.data?.message || 'No has iniciado sesión'}
           </Text>
         </View>
